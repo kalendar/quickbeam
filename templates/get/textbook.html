@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Textbook: {{ textbook.title }}
+{% endblock %}
+
+{% block body %}
+  <div class="mx-auto flex w-[65ch] flex-col gap-5">
+    <div class="flex flex-col gap-5">
+      <div class="flex w-full items-center justify-between">
+        <h1>{{ textbook.title }}</h1>
+        <div>
+          <AButton
+            :href="request.url_for('update_textbook_get', ident=textbook.id)"
+            text="Update" />
+          <AButton
+            :hx-post="request.url_for('delete_textbook', ident=textbook.id)"
+            color="red"
+            text="Delete" />
+        </div>
+      </div>
+      <div>
+        <h2>Prompt</h2>
+        <hr />
+        <p>{{ textbook.prompt }}</p>
+      </div>
+      <div>
+        <h2>Authors</h2>
+        <hr />
+        <p>{{ textbook.authors }}</p>
+      </div>
+    </div>
+    <div class="flex flex-col gap-5">
+      <div class="flex w-full items-center justify-between">
+        <h1>Activities</h1>
+        <AButton
+          :href="{{ request.url_for('create_activity_get', textbook_ident=textbook.id) }}"
+          text="Create New" />
+      </div>
+      {% for activity in textbook.activities %}
+        <div class="flex justify-between">
+          <a
+            href="{{ request.url_for('update_activity_get', activity_ident=activity.id, textbook_ident=activity.textbook_id) }}"
+            >{{ activity.name }}</a
+          >
+          <AButton
+            :hx-post="request.url_for('delete_activity', ident=activity.id)"
+            color="red"
+            text="Delete" />
+        </div>
+      {% endfor %}
+    </div>
+    <div class="flex flex-col gap-5">
+      <div class="flex w-full items-center justify-between">
+        <h1>Modules</h1>
+        <AButton
+          :href="{{ request.url_for('create_module_get', textbook_ident=textbook.id) }}"
+          text="Create New" />
+      </div>
+      {% for module in textbook.modules %}
+        <div class="flex justify-between">
+          <a
+            href="{{ request.url_for('update_module_get', module_ident=module.id, textbook_ident=module.textbook_id) }}"
+            >{{ module.name }}</a
+          >
+          <AButton
+            :hx-post="request.url_for('delete_module', ident=module.id)"
+            color="red"
+            text="Delete" />
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

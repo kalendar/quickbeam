@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://unpkg.com/htmx.org@2.0.4"
+      integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://unpkg.com/htmx-ext-json-enc@2.0.1/json-enc.js"
+      crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/main.css" />
+    {% block head_links %}
+    {% endblock %}
+    <title>
+      {% block title %}{{ title if title else "Quickbeam" }}{% endblock %}
+    </title>
+  </head>
+  <body>
+    <header>
+      <layout.Navbar :request="request" />
+    </header>
+    <main class="mt-5 w-full">
+      {% block body %}
+      {% endblock %}
+    </main>
+    <footer></footer>
+  </body>
+  {% block scripts %}
+  {% endblock %}
+</html>

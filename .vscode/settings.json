@@ -1,0 +1,12 @@
+{
+  "python.analysis.typeCheckingMode": "strict",
+  "cSpell.words": [
+    "jinjax",
+    "leaflock",
+    "OELM",
+    "Pydantic",
+    "Quickbeam",
+    "SQLA",
+    "sqlmodels"
+  ]
+}

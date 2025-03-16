@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Create Textbook
+{% endblock %}
+
+{% block body %}
+  <div class="w-full">
+    <form.Textbook
+      :hx-post="request.url_for('create_textbook_post')"
+      submission-text="Create Textbook"
+      class="mx-auto" />
+  </div>
+{% endblock %}

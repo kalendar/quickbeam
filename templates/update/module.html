@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Update Textbook
+{% endblock %}
+
+{% block body %}
+  <div class="w-full">
+    <form.Module
+      :hx-post="request.url_for('update_module_post', ident=module.id)"
+      :module="module"
+      :textbook_ident="textbook_ident"
+      submission-text="Update Module"
+      class="mx-auto" />
+  </div>
+{% endblock %}

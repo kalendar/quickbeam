@@ -1,0 +1,39 @@
+{# def submission_text="Submit", textbook=None #}
+
+<form
+  action=""
+  hx-ext="json-enc"
+  {{ attrs.render(class="flex w-[65ch] gap-5 flex-col") }}>
+  <div>
+    <label for="name">Title: </label>
+    <br />
+    <form.TextInput
+      name="title"
+      id="title"
+      required
+      :value="textbook.title if textbook else ''"
+      placeholder="My Textbook" />
+  </div>
+  <div>
+    <label for="prompt">Prompt: </label>
+    <br />
+    <form.TextArea
+      name="prompt"
+      id="prompt"
+      required
+      :text="textbook.prompt if textbook else ''" />
+  </div>
+  <div>
+    <label for="authors">Authors: </label>
+    <br />
+    <form.TextArea
+      name="authors"
+      id="authors"
+      required
+      :text="textbook.authors if textbook else ''" />
+  </div>
+  <input
+    type="submit"
+    value="{{ submission_text }}"
+    class="rounded border-2 border-sky-500 bg-sky-400 px-2 py-1 text-white transition duration-100 hover:bg-sky-500" />
+</form>

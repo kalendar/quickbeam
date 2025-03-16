@@ -1,0 +1,13 @@
+{# def text, color="blue" #}
+
+<a
+  {{ attrs.render() }}
+  {% if color == 'blue' %}
+    class="rounded border-2 border-sky-500 bg-sky-400 px-2 py-1 text-white
+    transition duration-100 hover:bg-sky-500"
+  {% elif color == 'red' %}
+    class="rounded border-2 border-red-500 bg-red-400 px-2 py-1 text-white
+    transition duration-100 hover:bg-red-500"
+  {% endif %}
+  >{{ text }}</a
+>
