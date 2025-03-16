@@ -1,0 +1,6 @@
+[submodule "database"]
+	path = database
+	url = https://github.com/kalendar/leaflock.git
+[submodule "leaflock"]
+	path = leaflock
+	url = https://github.com/kalendar/leaflock.git
