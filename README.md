@@ -2,7 +2,7 @@
 OELM authoring and management.
 
 ## Installation or Development
-Clone this repo and initialize it with `uv sync`.
+Clone this repo with `git clone https://github.com/kalendar/quickbeam.git --recurse-submodules` and initialize it with `uv sync`.
 
 Set the environment variable `quickbeam_sqlite_database_path` to a valid database path. If no database file exists, it will be created. 
 
