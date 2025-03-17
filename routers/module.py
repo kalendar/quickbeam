@@ -36,7 +36,6 @@ def create_module_post(
     session: Session,
 ):
     module = Module(**module_model.model_dump())
-    print(module)
     session.add(module)
     session.commit()
 

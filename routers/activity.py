@@ -42,7 +42,6 @@ def create_activity_post(
     activity_model: ActivityModel,
     session: Session,
 ):
-    print(activity_model.textbook_id)
     activity = Activity(
         name=activity_model.name,
         outcomes=activity_model.outcomes,
