@@ -1,19 +1,28 @@
-{# def text, color="blue" #}
+{# def text="", icon="", color="blue" #}
+{# 
+  This component has some predefined colors and icons:
+    Colors: red, green, blue
+    Icons: create, edit, delete. 
+#}
+{% set icon = icon.strip().lower() %}
+{% set color = color.strip().lower() %}
+{% if icon == 'create' %}
+  {% set icon = 'fa-solid fa-pen-to-square' %}
+{% elif icon == 'edit' %}
+  {% set icon = 'fa-solid fa-plus' %}
+{% elif icon == 'delete' %}
+  {% set icon = 'fa-solid fa-trash' %}
+{% endif %}
+{% if color == 'green' %}
+  {% set color = 'border-green-700 bg-green-700 hover:bg-green-400' %}
+{% elif color == 'blue' %}
+  {% set color = 'border-sky-600 bg-sky-600 hover:bg-sky-500' %}
+{% elif color == 'red' %}
+  {% set color = 'border-red-400 bg-red-400 hover:bg-red-600' %}
+{% endif %}
 
 <a
   {{ attrs.render() }}
-  {% if color == 'green' %}
-    class="rounded border-2 border-green-700 bg-green-700 px-2 py-1 text-white
-    transition duration-100 hover:bg-green-400 fa-solid fa-plus"
-  {% elif color == 'blue' %}
-    class="rounded border-2 border-sky-600 bg-sky-600 px-2 py-1 text-white
-    transition duration-100 hover:bg-sky-500 fa-solid fa-pen-to-square"
-  {% elif color == 'red' %}
-    class="rounded border-2 border-red-400 bg-red-400  px-2 py-1 text-white
-    transition duration-100 hover:bg-red-600 fa-solid fa-trash"
-
-  {% endif %}
-  >
-  
+  class="{{ icon }} {{ color }} cursor-pointer rounded border-2 px-2 py-1 text-white transition duration-100">
   {{ text }}</a
 >

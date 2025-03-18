@@ -31,5 +31,8 @@
   },
   "editor.quickSuggestions": {
     "strings": "on"
+  },
+  "[tailwindcss]": {
+    "editor.formatOnSave": true
   }
 }
