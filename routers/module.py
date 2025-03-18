@@ -24,7 +24,7 @@ def create_module_get(
 ):
     return templates.TemplateResponse(
         request=request,
-        name="create/module.html",
+        name="create/module.jinja",
         context={"textbook_ident": textbook_ident},
     )
 
@@ -65,7 +65,7 @@ def update_module_get(
 
     return templates.TemplateResponse(
         request=request,
-        name="update/module.html",
+        name="update/module.jinja",
         context={
             "module": module,
             "textbook_ident": textbook_ident,

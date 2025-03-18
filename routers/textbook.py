@@ -26,7 +26,7 @@ def textbooks(
 
     return templates.TemplateResponse(
         request=request,
-        name="textbooks.html",
+        name="textbooks.jinja",
         context={"textbooks": textbooks},
     )
 
@@ -42,7 +42,7 @@ def textbook_details(
 
     return templates.TemplateResponse(
         request=request,
-        name="get/textbook.html",
+        name="get/textbook.jinja",
         context={"textbook": textbook},
     )
 
@@ -54,7 +54,7 @@ def create_textbook_get(
 ):
     return templates.TemplateResponse(
         request=request,
-        name="create/textbook.html",
+        name="create/textbook.jinja",
     )
 
 
@@ -81,7 +81,7 @@ def update_textbook_get(
 
     return templates.TemplateResponse(
         request=request,
-        name="update/textbook.html",
+        name="update/textbook.jinja",
         context={"textbook": textbook},
     )
 

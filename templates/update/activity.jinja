@@ -1,16 +1,17 @@
-{% extends "base.html" %}
+{% extends "base.jinja" %}
 
 {% block title %}
-  Create Textbook
+  Update Textbook
 {% endblock %}
 
 {% block body %}
   <div class="w-full">
     <form.Activity
-      :hx-post="request.url_for('create_activity_post')"
+      :hx-post="request.url_for('update_activity_post', ident=activity.id)"
       :textbook_ident="textbook_ident"
+      :activity="activity"
       :modules="modules"
-      submission-text="Create Activity"
+      submission-text="Update Activity"
       class="mx-auto" />
   </div>
 {% endblock %}

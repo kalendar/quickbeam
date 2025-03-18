@@ -38,10 +38,11 @@ OELM authoring and management.
     2. [`prettier-plugin-jinja-template`](https://github.com/davidodenwald/prettier-plugin-jinja-template) for better jinja support.
 4. [`ruff`](https://github.com/astral-sh/ruff) for python linting/formatting/sorting.
 
-It is recommended to use Visual Studio Code (VSCode), as a `.vscode` workspace settings file has been pre-configured for these tools. It is recommended to install these extensions to your workspace:
+It is recommended to use Visual Studio Code (VSCode), as a `.vscode` workspace settings file has been pre-configured for these tools. It is highly recommended to install these extensions to your workspace:
 [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode), 
 [Ruff](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff), 
-[Tailwind](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss), 
+[Tailwind](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss),
+[Better Jinja](https://marketplace.visualstudio.com/items?itemName=samuelcolvin.jinjahtml), and
 [htmx-tags](https://marketplace.visualstudio.com/items?itemName=otovo-oss.htmx-tags).
 
 ### Instructions

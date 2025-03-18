@@ -1,10 +1,13 @@
 {# def request #}
 
 <nav
-  class="flex h-[var(--nav-height)] w-full items-center justify-between bg-slate-600 px-5"
->
+  class="flex h-[var(--nav-height)] w-full items-center justify-between bg-slate-600 px-5">
   <p class="text-white">OELM: Quickbeam</p>
   <ul>
-    <li><a class="text-white" href="{{ request.url_for('textbooks') }}">Generative Textbooks</a></li>
+    <li>
+      <a class="text-white" href="{{ request.url_for('textbooks') }}"
+        >Generative Textbooks</a
+      >
+    </li>
   </ul>
 </nav>

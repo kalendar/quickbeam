@@ -31,7 +31,7 @@ def create_activity_get(
 
     return templates.TemplateResponse(
         request=request,
-        name="create/activity.html",
+        name="create/activity.jinja",
         context={"textbook_ident": textbook_ident, "modules": modules},
     )
 
@@ -93,7 +93,7 @@ def update_activity_get(
 
     return templates.TemplateResponse(
         request=request,
-        name="update/activity.html",
+        name="update/activity.jinja",
         context={
             "activity": activity,
             "textbook_ident": textbook_ident,

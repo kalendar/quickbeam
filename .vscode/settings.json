@@ -1,6 +1,7 @@
 {
   "python.analysis.typeCheckingMode": "strict",
   "cSpell.words": [
+    "fastapi",
     "jinjax",
     "leaflock",
     "OELM",
@@ -9,6 +10,9 @@
     "SQLA",
     "sqlmodels"
   ],
+  "files.associations": {
+    "*.jinja": "jinja-html"
+  },
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.formatOnSave": true,
