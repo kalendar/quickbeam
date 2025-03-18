@@ -8,11 +8,17 @@
 h1 {
   font-size: x-large;
   font-weight: 800;
+  font-family: Poppins, sans-serif;
 }
 
 h2 {
   font-size: large;
   font-weight: 600;
+  font-family: Poppins;
+}
+
+p, a, input, textarea, label {
+  font-family: Roboto;
 }
 
 @layer utilities {
