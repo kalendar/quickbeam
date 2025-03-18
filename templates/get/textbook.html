@@ -12,11 +12,13 @@
         <div>
           <AButton
             :href="request.url_for('update_textbook_get', ident=textbook.id)"
-            text="Update" />
-          <AButton
+            color="blue"
+            text=""/>
+
+            <AButton
             :hx-post="request.url_for('delete_textbook', ident=textbook.id)"
-            color="red"
-            text="Delete" />
+            color="red" 
+            text="" />
         </div>
       </div>
       <div>
@@ -35,7 +37,8 @@
         <h1>Activities</h1>
         <AButton
           :href="{{ request.url_for('create_activity_get', textbook_ident=textbook.id) }}"
-          text="Create New" />
+          color="green"
+          text="" />
       </div>
       {% for activity in textbook.activities %}
         <div class="flex justify-between">
@@ -55,7 +58,8 @@
         <h1>Modules</h1>
         <AButton
           :href="{{ request.url_for('create_module_get', textbook_ident=textbook.id) }}"
-          text="Create New" />
+          color="green"
+          text="" />
       </div>
       {% for module in textbook.modules %}
         <div class="flex justify-between">
@@ -66,7 +70,7 @@
           <AButton
             :hx-post="request.url_for('delete_module', ident=module.id)"
             color="red"
-            text="Delete" />
+            text="" />
         </div>
       {% endfor %}
     </div>

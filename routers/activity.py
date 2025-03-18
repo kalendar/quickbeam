@@ -12,8 +12,8 @@ router = APIRouter()
 
 class ActivityModel(BaseModel):
     name: str
-    outcomes: str
-    summary: str
+    description: str
+    prompt: str
     textbook_id: int
     module_ids: set[int] | int
 
@@ -44,8 +44,8 @@ def create_activity_post(
 ):
     activity = Activity(
         name=activity_model.name,
-        outcomes=activity_model.outcomes,
-        summary=activity_model.summary,
+        description=activity_model.description,
+        prompt=activity_model.prompt,
         textbook_id=activity_model.textbook_id,
     )
 
@@ -126,8 +126,8 @@ def update_activity_post(
     )
 
     activity.name = activity_model.name
-    activity.outcomes = activity_model.outcomes
-    activity.summary = activity_model.summary
+    activity.description = activity_model.description
+    activity.prompt = activity_model.prompt
     session.commit()
 
     return HTMLResponse(
