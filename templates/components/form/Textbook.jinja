@@ -5,7 +5,14 @@
   hx-ext="json-enc"
   {{ attrs.render(class="flex w-[65ch] gap-5 flex-col") }}>
   <div>
-    <label for="name">Title: </label>
+    <label for="name">Title 
+      <span class="relative inline-block group">
+      <i class="fa-solid fa-circle-info help"></i>
+        <span class="absolute top-full left-0 mt-2 hidden group-hover:block bg-gray-800 text-white text-xs rounded py-1 px-2 z-10 w-100 max-w-xs">
+          Enter the title of your textbook here.
+        </span>
+      </span>    
+    </label>
     <br />
     <form.TextInput
       name="title"
@@ -15,7 +22,17 @@
       placeholder="My Textbook" />
   </div>
   <div>
-    <label for="prompt">Prompt: </label>
+    <label for="prompt">System Prompt Stub 
+          <span class="relative inline-block group">
+      <i class="fa-solid fa-circle-info help"></i>
+        <span class="absolute top-full left-0 mt-2 hidden group-hover:block bg-gray-800 text-white text-xs rounded py-1 px-2 z-10 w-100 max-w-xs">
+          This is the system prompt stub. This language will be included in every prompt sent to the LLM, so should not include
+          details about specific topics or pedagogies. It might include information about the overall course topic, as well as information about 
+          personality, voice, and tone. For example, "You are an empathetic, caring, supportive tutor for an undergraduate Introduction
+          to Psychology course."
+        </span>
+      </span>
+</label>
     <br />
     <form.TextArea
       name="prompt"
@@ -24,7 +41,14 @@
       :text="textbook.prompt if textbook else ''" />
   </div>
   <div>
-    <label for="authors">Authors: </label>
+    <label for="authors">Authors
+      <span class="relative inline-block group">
+      <i class="fa-solid fa-circle-info help"></i>
+        <span class="absolute top-full left-0 mt-2 hidden group-hover:block bg-gray-800 text-white text-xs rounded py-1 px-2 z-10 w-100 max-w-xs">
+          List the authors who contributed to this generative textbook. One name per line.
+        </span>
+      </span>
+      </label>
     <br />
     <form.TextArea
       name="authors"
@@ -36,4 +60,10 @@
     type="submit"
     value="{{ submission_text }}"
     class="rounded border-2 border-sky-600 bg-sky-600 px-2 py-1 text-white transition duration-100 hover:bg-sky-500" />
+    <button
+      type="button"
+      onclick="window.history.back();"
+      class="rounded border-2 border-gray-600 bg-gray-600 px-2 py-1 text-white transition duration-100 hover:bg-gray-500">
+      Cancel
+    </button>
 </form>

@@ -4,11 +4,11 @@
 
 {% block body %}
   <div class="mx-auto w-[80%]">
-    <div class="flex w-full justify-between">
+    <div class="flex w-full items-center justify-between">
       <h1>Your Generative Textbooks</h1>
       <a
         href="{{ request.url_for('create_textbook_get') }}"
-        class="rounded border-2 border-sky-700 bg-sky-700 px-2 py-1 text-white transition duration-100 hover:bg-sky-600"
+        class="rounded border-2 border-sky-700 bg-sky-700 px-2 py-1 items-center text-white transition duration-100 hover:bg-sky-600"
         >New Generative Textbook</a
       >
     </div>

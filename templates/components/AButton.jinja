@@ -6,9 +6,9 @@
 #}
 {% set icon = icon.strip().lower() %}
 {% set color = color.strip().lower() %}
-{% if icon == 'create' %}
+{% if icon == 'edit' %}
   {% set icon = 'fa-solid fa-pen-to-square' %}
-{% elif icon == 'edit' %}
+{% elif icon == 'create' %}
   {% set icon = 'fa-solid fa-plus' %}
 {% elif icon == 'delete' %}
   {% set icon = 'fa-solid fa-trash' %}
