@@ -10,8 +10,12 @@
     "SQLA",
     "sqlmodels"
   ],
+  "prettier.documentSelectors": ["templates/components/**/*.jinja"],
   "files.associations": {
     "*.jinja": "jinja-html"
+  },
+  "[jinja-html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff",
@@ -29,10 +33,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
   },
-  "[jinja-html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
-  },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
@@ -42,5 +42,8 @@
   },
   "[tailwindcss]": {
     "editor.formatOnSave": true
+  },
+  "tailwindCSS.includeLanguages": {
+    "jinja-html": "html"
   }
 }

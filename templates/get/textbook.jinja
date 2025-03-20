@@ -11,20 +11,20 @@
         <h1>{{ textbook.title }}</h1>
       </div>
       <div class="flex w-full items-center justify-between">
-      <div>
-          <a class="toc"
+        <div>
+          <a
+            class="text-sky-600 underline"
             href="{{ request.url_for('update_textbook_get', ident=textbook.id) }}"
             >Overall Settings</a
           >
-
-      </div>
-      <div class="flex gap-2">
+        </div>
+        <div class="flex gap-2">
           <AButton
             :hx-post="request.url_for('delete_textbook', ident=textbook.id)"
             color="red"
             icon="delete" />
-      </div>
         </div>
+      </div>
 
       <div>
         <hr />
@@ -40,7 +40,8 @@
       </div>
       {% for activity in textbook.activities %}
         <div class="flex justify-between">
-          <a class="toc"
+          <a
+            class="text-sky-600 underline"
             href="{{ request.url_for('update_activity_get', activity_ident=activity.id, textbook_ident=activity.textbook_id) }}"
             >{{ activity.name }}</a
           >
@@ -51,9 +52,7 @@
         </div>
       {% endfor %}
     </div>
-      <div>
-        <hr />
-      </div>
+    <hr />
 
     <div class="flex flex-col gap-5">
       <div class="flex w-full items-center justify-between">
@@ -65,7 +64,8 @@
       </div>
       {% for module in textbook.modules %}
         <div class="flex justify-between">
-          <a class="toc"
+          <a
+            class="text-sky-600 underline"
             href="{{ request.url_for('update_module_get', module_ident=module.id, textbook_ident=module.textbook_id) }}"
             >{{ module.name }}</a
           >

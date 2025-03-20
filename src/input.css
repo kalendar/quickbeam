@@ -31,12 +31,3 @@ textarea,
 label {
   font-family: Roboto;
 }
-
-a.toc {
-  color: oklch(0.588 0.158 241.966);
-  text-decoration: underline;
-}
-
-.help {
-  color: oklch(0.588 0.158 241.966);
-}
