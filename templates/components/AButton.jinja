@@ -14,15 +14,15 @@
   {% set icon = 'fa-solid fa-trash' %}
 {% endif %}
 {% if color == 'green' %}
-  {% set color = 'border-green-700 bg-green-700 hover:bg-green-400' %}
+  {% set color = 'border-green-700 bg-green-700 hover:bg-green-600' %}
 {% elif color == 'blue' %}
   {% set color = 'border-sky-600 bg-sky-600 hover:bg-sky-500' %}
 {% elif color == 'red' %}
-  {% set color = 'border-red-400 bg-red-400 hover:bg-red-600' %}
+  {% set color = 'border-red-400 bg-red-400 hover:bg-red-700' %}
 {% endif %}
 
 <a
   {{ attrs.render() }}
-  class="{{ icon }} {{ color }} cursor-pointer rounded border-2 px-2 py-1 text-white transition duration-100">
+  class="{{ icon }} {{ color }} cursor-pointer text-sm rounded border-2 px-2 py-1 text-white transition duration-100">
   {{ text }}</a
 >
