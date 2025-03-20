@@ -4,7 +4,12 @@
   hx-ext="json-enc"
   {{ attrs.render(class="flex w-[65ch] gap-5 flex-col") }}>
   <div>
-    <label for="name">Name: </label>
+    <label for="name">Name
+      <Tooltip>
+        This is the name of the module. It will be shown to learners. 
+      </Tooltip>
+
+    </label>
     <br />
     <form.TextInput
       name="name"
@@ -21,7 +26,12 @@
     hidden
     value="{{ textbook_ident }}" />
   <div>
-    <label for="outcomes">Outcomes: </label>
+    <label for="outcomes">Outcomes
+      <Tooltip>
+        List the knowledge and skills learners should develop when learning from this module.
+        List one outcome per line. 
+      </Tooltip>
+    </label>
     <br />
     <form.TextArea
       name="outcomes"
@@ -30,7 +40,14 @@
       :text="module.outcomes if module else ''" />
   </div>
   <div>
-    <label for="summary">Summary: </label>
+    <label for="summary">Summary
+      <Tooltip>
+        Provide a detailed exposition of the knowledge and skills learners need to develop. 
+        This should be similar to a detailed chapter summary and NOT an entire textbook chapter.
+        If your work is based on an existing OER textbook chapter, you might consider using AI 
+        to draft a summary. 
+      </Tooltip>
+</label>
     <br />
     <form.TextArea
       name="summary"

@@ -4,7 +4,11 @@
   hx-ext="json-enc"
   {{ attrs.render(class="flex w-[65ch] gap-5 flex-col") }}>
   <div>
-    <label for="name">Name: </label>
+    <label for="name">Name
+      <Tooltip>
+        This is the name of the activity. It will be shown to learners. 
+      </Tooltip>
+    </label>
     <br />
     <form.TextInput
       name="name"
@@ -21,7 +25,11 @@
     hidden
     value="{{ textbook_ident }}" />
   <div>
-    <label for="description">Description: </label>
+    <label for="description">Description
+      <Tooltip>
+        This is the description of the activity. It will be shown to learners. 
+      </Tooltip>
+    </label>
     <br />
     <form.TextArea
       name="description"
@@ -31,7 +39,12 @@
       :text="activity.description if activity else ''" />
   </div>
   <div>
-    <label for="prompt">Prompt: </label>
+    <label for="prompt">Prompt
+      <Tooltip>
+        This language will be added to the system prompt stub and sent to the LLM. 
+      </Tooltip>
+    
+    </label>
     <br />
     <form.TextArea
       name="prompt"
@@ -41,7 +54,12 @@
       :text="activity.prompt if activity else ''" />
   </div>
   <div>
-    <label for="Modules">Modules: </label>
+    <label for="Modules">Modules
+      <Tooltip>
+        Select the modules this activity is compatible with.
+      </Tooltip>
+
+    </label>
     <br />
     <select
       name="module_ids"
