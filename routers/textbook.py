@@ -1,11 +1,11 @@
 from fastapi import HTTPException, Request
 from fastapi.responses import HTMLResponse
 from fastapi.routing import APIRouter
+from leaflock.sqlalchemy_tables import Textbook
 from pydantic import BaseModel
 from sqlalchemy import select
 
 from dependencies import Session, Templates
-from leaflock.tables.textbook import Textbook
 
 router = APIRouter()
 

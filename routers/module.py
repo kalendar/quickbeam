@@ -1,10 +1,10 @@
 from fastapi import HTTPException, Request
 from fastapi.responses import HTMLResponse
 from fastapi.routing import APIRouter
+from leaflock.sqlalchemy_tables import Module
 from pydantic import BaseModel
 
 from dependencies import Session, Templates
-from leaflock.tables.module import Module
 
 router = APIRouter()
 
@@ -35,7 +35,14 @@ def create_module_post(
     module_model: ModuleModel,
     session: Session,
 ):
-    module = Module(**module_model.model_dump())
+    module = Module(
+        name=module_model.name,
+        outcomes=module_model.outcomes,
+        summary=module_model.summary,
+    )
+
+    module.textbook_id = module_model.textbook_id
+
     session.add(module)
     session.commit()
 

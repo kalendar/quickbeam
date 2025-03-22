@@ -1,11 +1,11 @@
 from fastapi import HTTPException, Request
 from fastapi.responses import HTMLResponse
 from fastapi.routing import APIRouter
+from leaflock.sqlalchemy_tables import Activity, Module
 from pydantic import BaseModel
 from sqlalchemy import select
 
 from dependencies import Session, Templates
-from leaflock.tables import Activity, Module
 
 router = APIRouter()
 
@@ -46,8 +46,9 @@ def create_activity_post(
         name=activity_model.name,
         description=activity_model.description,
         prompt=activity_model.prompt,
-        textbook_id=activity_model.textbook_id,
     )
+
+    activity.textbook_id = activity_model.textbook_id
 
     # In the case of one selected module, it returns int not list[int]
     module_ids = (

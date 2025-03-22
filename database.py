@@ -1,10 +1,10 @@
+from leaflock.sqlalchemy_tables.activity import Activity
+from leaflock.sqlalchemy_tables.base import Base
+from leaflock.sqlalchemy_tables.module import Module
+from leaflock.sqlalchemy_tables.textbook import Textbook
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 
-from leaflock.tables.activity import Activity
-from leaflock.tables.base import Base
-from leaflock.tables.module import Module
-from leaflock.tables.textbook import Textbook
 from settings import SETTINGS
 
 __FORCE_USE = [Textbook, Activity, Module]  # type: ignore

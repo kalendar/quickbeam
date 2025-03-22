@@ -50,7 +50,7 @@ It is recommended to use Visual Studio Code (VSCode), as a `.vscode` workspace s
 2. Initialize it with `uv sync`.
 3. Set the environment variable `quickbeam_sqlite_database_path` to a valid sqlite database path. If no database file exists, it will be created. 
 4. Enter the virtual environment and run `fastapi dev`.
-5. To watch and compile CSS changes, run `npx @tailwindcss/cli -i ./src/input.css -o ./static/main.css --watch` in the root directory.
+5. To watch and compile CSS changes, run `npx tailwindcss -i ./src/input.css -o ./static/main.css --watch` in the root directory.
 
 ### Python Types
 It is highly recommended to use a static type checker like [`pylance`](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance) and to use types wherever applicable, eg. function parameters/returns, dictionaries and lists. 
