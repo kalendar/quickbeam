@@ -2,11 +2,13 @@
 
 <nav
   class="flex h-[var(--nav-height)] w-full items-center justify-between bg-slate-600 px-5">
-  <p class="text-white">OELM Author</p>
+  <p><a class="text-white" href="{{ request.url_for('textbooks') }}"
+  >OELM Author</a
+  ></p>
   <ul>
     <li>
-      <a class="text-white" href="{{ request.url_for('textbooks') }}"
-        >Your Generative Textbooks</a
+      <a class="text-white" href=""
+        >Docs</a
       >
     </li>
   </ul>

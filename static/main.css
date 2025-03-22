@@ -8,16 +8,21 @@
       "Courier New", monospace;
     --color-red-400: oklch(0.704 0.191 22.216);
     --color-red-600: oklch(0.577 0.245 27.325);
+    --color-red-700: oklch(0.505 0.213 27.518);
     --color-green-400: oklch(0.792 0.209 151.711);
+    --color-green-500: oklch(0.723 0.219 149.579);
+    --color-green-600: oklch(0.627 0.194 149.214);
     --color-green-700: oklch(0.527 0.154 150.069);
     --color-sky-500: oklch(0.685 0.169 237.323);
     --color-sky-600: oklch(0.588 0.158 241.966);
     --color-sky-700: oklch(0.5 0.134 242.749);
     --color-blue-950: oklch(0.282 0.091 267.935);
     --color-slate-100: oklch(0.968 0.007 247.896);
+    --color-slate-200: oklch(0.929 0.013 255.508);
     --color-slate-600: oklch(0.446 0.043 257.281);
     --color-gray-50: oklch(0.985 0.002 247.839);
     --color-gray-100: oklch(0.967 0.003 264.542);
+    --color-gray-300: oklch(0.872 0.01 258.338);
     --color-gray-500: oklch(0.551 0.027 264.364);
     --color-gray-600: oklch(0.446 0.03 256.802);
     --color-gray-800: oklch(0.278 0.033 256.848);
@@ -26,6 +31,8 @@
     --container-xs: 20rem;
     --text-xs: 0.75rem;
     --text-xs--line-height: calc(1 / 0.75);
+    --text-sm: 0.875rem;
+    --text-sm--line-height: calc(1.25 / 0.875);
     --radius-2xl: 1rem;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -212,6 +219,9 @@
   .mt-5 {
     margin-top: calc(var(--spacing) * 5);
   }
+  .mb-5 {
+    margin-bottom: calc(var(--spacing) * 5);
+  }
   .block {
     display: block;
   }
@@ -295,6 +305,9 @@
     border-style: var(--tw-border-style);
     border-width: 2px;
   }
+  .border-gray-300 {
+    border-color: var(--color-gray-300);
+  }
   .border-gray-600 {
     border-color: var(--color-gray-600);
   }
@@ -343,6 +356,9 @@
   .bg-slate-100 {
     background-color: var(--color-slate-100);
   }
+  .bg-slate-200 {
+    background-color: var(--color-slate-200);
+  }
   .bg-slate-600 {
     background-color: var(--color-slate-600);
   }
@@ -360,6 +376,10 @@
   }
   .py-1 {
     padding-block: calc(var(--spacing) * 1);
+  }
+  .text-sm {
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
   }
   .text-xs {
     font-size: var(--text-xs);
@@ -427,10 +447,31 @@
       }
     }
   }
+  .hover\:bg-green-500 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-green-500);
+      }
+    }
+  }
+  .hover\:bg-green-600 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-green-600);
+      }
+    }
+  }
   .hover\:bg-red-600 {
     &:hover {
       @media (hover: hover) {
         background-color: var(--color-red-600);
+      }
+    }
+  }
+  .hover\:bg-red-700 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-red-700);
       }
     }
   }
