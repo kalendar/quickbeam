@@ -1,7 +1,9 @@
+import uuid
+
 from fastapi import HTTPException, Request
 from fastapi.responses import HTMLResponse
 from fastapi.routing import APIRouter
-from leaflock.sqlalchemy_tables import Textbook
+from leaflock.sqlalchemy_tables.textbook import Textbook
 from pydantic import BaseModel
 from sqlalchemy import select
 
@@ -34,11 +36,13 @@ def textbooks(
 @router.get("/get/textbook/{ident}", response_class=HTMLResponse)
 def textbook_details(
     request: Request,
-    ident: int,
+    ident: uuid.UUID,
     session: Session,
     templates: Templates,
 ):
     textbook = session.get(Textbook, ident=ident)
+
+    print(textbook.guid)
 
     return templates.TemplateResponse(
         request=request,
@@ -73,7 +77,7 @@ def create_textbook_post(
 @router.get("/update/textbook/{ident}", response_class=HTMLResponse)
 def update_textbook_get(
     request: Request,
-    ident: int,
+    ident: uuid.UUID,
     session: Session,
     templates: Templates,
 ):
@@ -89,7 +93,7 @@ def update_textbook_get(
 @router.post("/update/textbook/{ident}", response_class=HTMLResponse)
 def update_textbook_post(
     request: Request,
-    ident: int,
+    ident: uuid.UUID,
     session: Session,
     textbook_model: TextbookModel,
 ):
@@ -112,7 +116,7 @@ def update_textbook_post(
 @router.post("/delete/textbook/{ident}", response_class=HTMLResponse)
 def delete_textbook(
     request: Request,
-    ident: int,
+    ident: uuid.UUID,
     session: Session,
 ):
     textbook = session.get(Textbook, ident=ident)

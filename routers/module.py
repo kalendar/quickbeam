@@ -1,7 +1,9 @@
+import uuid
+
 from fastapi import HTTPException, Request
 from fastapi.responses import HTMLResponse
 from fastapi.routing import APIRouter
-from leaflock.sqlalchemy_tables import Module
+from leaflock.sqlalchemy_tables.module import Module
 from pydantic import BaseModel
 
 from dependencies import Session, Templates
@@ -13,13 +15,13 @@ class ModuleModel(BaseModel):
     name: str
     outcomes: str
     summary: str
-    textbook_id: int
+    textbook_guid: uuid.UUID
 
 
 @router.get("/create/module/{textbook_ident}", response_class=HTMLResponse)
 def create_module_get(
     request: Request,
-    textbook_ident: int,
+    textbook_ident: uuid.UUID,
     templates: Templates,
 ):
     return templates.TemplateResponse(
@@ -41,7 +43,7 @@ def create_module_post(
         summary=module_model.summary,
     )
 
-    module.textbook_id = module_model.textbook_id
+    module.textbook_guid = module_model.textbook_guid
 
     session.add(module)
     session.commit()
@@ -49,7 +51,7 @@ def create_module_post(
     return HTMLResponse(
         headers={
             "HX-Location": str(
-                request.url_for("textbook_details", ident=module_model.textbook_id)
+                request.url_for("textbook_details", ident=module_model.textbook_guid)
             )
         }
     )
@@ -60,8 +62,8 @@ def create_module_post(
 )
 def update_module_get(
     request: Request,
-    module_ident: int,
-    textbook_ident: int,
+    module_ident: uuid.UUID,
+    textbook_ident: uuid.UUID,
     session: Session,
     templates: Templates,
 ):
@@ -83,7 +85,7 @@ def update_module_get(
 @router.post("/update/module/{ident}", response_class=HTMLResponse)
 def update_module_post(
     request: Request,
-    ident: int,
+    ident: uuid.UUID,
     session: Session,
     module_model: ModuleModel,
 ):
@@ -95,14 +97,14 @@ def update_module_post(
     module.name = module_model.name
     module.outcomes = module_model.outcomes
     module.summary = module_model.summary
-    module.textbook_id = module_model.textbook_id
+    module.textbook_guid = module_model.textbook_guid
 
     session.commit()
 
     return HTMLResponse(
         headers={
             "HX-Location": str(
-                request.url_for("textbook_details", ident=module_model.textbook_id)
+                request.url_for("textbook_details", ident=module_model.textbook_guid)
             )
         }
     )
@@ -111,7 +113,7 @@ def update_module_post(
 @router.post("/delete/module/{ident}", response_class=HTMLResponse)
 def delete_module(
     request: Request,
-    ident: int,
+    ident: uuid.UUID,
     session: Session,
 ):
     module = session.get(Module, ident=ident)
@@ -119,13 +121,13 @@ def delete_module(
     if not module:
         raise HTTPException(status_code=404, detail="Module not found")
 
-    textbook_id = module.textbook_id
+    textbook_guid = module.textbook_guid
 
     session.delete(module)
     session.commit()
 
     return HTMLResponse(
         headers={
-            "HX-Location": str(request.url_for("textbook_details", ident=textbook_id))
+            "HX-Location": str(request.url_for("textbook_details", ident=textbook_guid))
         }
     )

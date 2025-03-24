@@ -7,7 +7,7 @@
 {% block body %}
   <div class="w-full">
     <form.Textbook
-      :hx-post="request.url_for('update_textbook_post', ident=textbook.id)"
+      :hx-post="request.url_for('update_textbook_post', ident=textbook.guid)"
       :textbook="textbook"
       submission-text="Update Textbook"
       class="mx-auto" />

@@ -102,16 +102,16 @@ wheels = [
 
 [[package]]
 name = "fastapi"
-version = "0.115.11"
+version = "0.115.12"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "pydantic" },
     { name = "starlette" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/b5/28/c5d26e5860df807241909a961a37d45e10533acef95fc368066c7dd186cd/fastapi-0.115.11.tar.gz", hash = "sha256:cc81f03f688678b92600a65a5e618b93592c65005db37157147204d8924bf94f", size = 294441 }
+sdist = { url = "https://files.pythonhosted.org/packages/f4/55/ae499352d82338331ca1e28c7f4a63bfd09479b16395dce38cf50a39e2c2/fastapi-0.115.12.tar.gz", hash = "sha256:1e2c2a2646905f9e83d32f04a3f86aff4a286669c6c950ca95b5fd68c2602681", size = 295236 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/b3/5d/4d8bbb94f0dbc22732350c06965e40740f4a92ca560e90bb566f4f73af41/fastapi-0.115.11-py3-none-any.whl", hash = "sha256:32e1541b7b74602e4ef4a0260ecaf3aadf9d4f19590bba3e1bf2ac4666aa2c64", size = 94926 },
+    { url = "https://files.pythonhosted.org/packages/50/b3/b51f09c2ba432a576fe63758bddc81f78f0c6309d9e5c10d194313bf021e/fastapi-0.115.12-py3-none-any.whl", hash = "sha256:e94613d6c05e27be7ffebdd6ea5f388112e5e430c8f7d6494a9d1d88d43e814d", size = 95164 },
 ]
 
 [package.optional-dependencies]
@@ -255,7 +255,7 @@ wheels = [
 
 [[package]]
 name = "leaflock"
-version = "0.1.1"
+version = "0.1.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "alembic" },
@@ -263,9 +263,9 @@ dependencies = [
     { name = "pydantic" },
     { name = "sqlalchemy" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/d2/89/ee7c0c2850b6b5b81a866b0fbeec3fedb5062fdb799cc4f9ab0324dd512f/leaflock-0.1.1.tar.gz", hash = "sha256:6c5f69d3ba885d6982b0e87eb9f5a1e157cb74b4bd7d96fe82a789d93165e2fa", size = 49272 }
+sdist = { url = "https://files.pythonhosted.org/packages/cb/14/b8292f1d6969c6ae7e6276c604653109e6eb16462b51f3eb0b27b53df94f/leaflock-0.1.2.tar.gz", hash = "sha256:271d100f36b4d92ddddd24903dad0e110295f3ac623ab0bb2d6ebf2d46411cf3", size = 49800 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/7a/14/4d31e3582ed862f3ba042612c15e61308e101a3ed16df04d443dc38627c2/leaflock-0.1.1-py3-none-any.whl", hash = "sha256:1f51405735f538443b1e2802101d9772a2f62fc2c981b65d4e1f828c61aff0a7", size = 24342 },
+    { url = "https://files.pythonhosted.org/packages/61/b5/094d7d70cd93eaa621ca5be9e8c6be8486578a1394b30deb85fc540249da/leaflock-0.1.2-py3-none-any.whl", hash = "sha256:f04bf016018e293b579445555a255c1220b8669bf439b886a0433ab7a8f86f13", size = 25405 },
 ]
 
 [[package]]
@@ -442,8 +442,8 @@ dependencies = [
 requires-dist = [
     { name = "fastapi", extras = ["standard"], specifier = ">=0.115.11" },
     { name = "jinja2", specifier = ">=3.1.6" },
-    { name = "jinjax", specifier = ">=0.48" },
-    { name = "leaflock", specifier = ">=0.1.1" },
+    { name = "jinjax", specifier = "==0.52" },
+    { name = "leaflock", specifier = ">=0.1.2" },
     { name = "pydantic-settings", specifier = ">=2.8.1" },
     { name = "sqlalchemy", specifier = ">=2.0.39" },
 ]

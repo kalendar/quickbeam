@@ -1,7 +1,11 @@
+import uuid
+from typing import Optional
+
 from fastapi import HTTPException, Request
 from fastapi.responses import HTMLResponse
 from fastapi.routing import APIRouter
-from leaflock.sqlalchemy_tables import Activity, Module
+from leaflock.sqlalchemy_tables.activity import Activity
+from leaflock.sqlalchemy_tables.module import Module
 from pydantic import BaseModel
 from sqlalchemy import select
 
@@ -14,19 +18,19 @@ class ActivityModel(BaseModel):
     name: str
     description: str
     prompt: str
-    textbook_id: int
-    module_ids: set[int] | int
+    textbook_guid: uuid.UUID
+    module_guids: Optional[set[uuid.UUID] | uuid.UUID] = None
 
 
 @router.get("/create/activity/{textbook_ident}", response_class=HTMLResponse)
 def create_activity_get(
     request: Request,
-    textbook_ident: int,
+    textbook_ident: uuid.UUID,
     session: Session,
     templates: Templates,
 ):
     modules = session.scalars(
-        select(Module).where(Module.textbook_id == textbook_ident)
+        select(Module).where(Module.textbook_guid == textbook_ident)
     )
 
     return templates.TemplateResponse(
@@ -48,17 +52,17 @@ def create_activity_post(
         prompt=activity_model.prompt,
     )
 
-    activity.textbook_id = activity_model.textbook_id
+    activity.textbook_guid = activity_model.textbook_guid
 
     # In the case of one selected module, it returns int not list[int]
     module_ids = (
-        activity_model.module_ids
-        if isinstance(activity_model.module_ids, set)
-        else set([activity_model.module_ids])
+        activity_model.module_guids
+        if isinstance(activity_model.module_guids, set)
+        else set([activity_model.module_guids])
     )
 
     activity.modules = set(
-        session.scalars(select(Module).where(Module.id.in_(module_ids))).all()
+        session.scalars(select(Module).where(Module.guid.in_(module_ids))).all()
     )
 
     session.add(activity)
@@ -67,7 +71,7 @@ def create_activity_post(
     return HTMLResponse(
         headers={
             "HX-Location": str(
-                request.url_for("textbook_details", ident=activity_model.textbook_id)
+                request.url_for("textbook_details", ident=activity_model.textbook_guid)
             )
         }
     )
@@ -78,8 +82,8 @@ def create_activity_post(
 )
 def update_activity_get(
     request: Request,
-    activity_ident: int,
-    textbook_ident: int,
+    activity_ident: uuid.UUID,
+    textbook_ident: uuid.UUID,
     session: Session,
     templates: Templates,
 ):
@@ -89,7 +93,7 @@ def update_activity_get(
         raise HTTPException(status_code=404, detail="Activity not found")
 
     modules = session.scalars(  # type:ignore
-        select(Module).where(Module.textbook_id == textbook_ident)  # type:ignore
+        select(Module).where(Module.textbook_guid == textbook_ident)  # type:ignore
     )
 
     return templates.TemplateResponse(
@@ -106,7 +110,7 @@ def update_activity_get(
 @router.post("/update/activity/{ident}", response_class=HTMLResponse)
 def update_activity_post(
     request: Request,
-    ident: int,
+    ident: uuid.UUID,
     session: Session,
     activity_model: ActivityModel,
 ):
@@ -115,15 +119,15 @@ def update_activity_post(
     if not activity:
         raise HTTPException(status_code=404, detail="Activity not found")
 
-    # In the case of one selected module, it returns int not list[int]
-    module_ids = (
-        activity_model.module_ids
-        if isinstance(activity_model.module_ids, set)
-        else [activity_model.module_ids]
+    # In the case of one selected module, it returns uuid.UUID not list[uuid.UUID]
+    module_guids = (
+        activity_model.module_guids
+        if isinstance(activity_model.module_guids, set)
+        else [activity_model.module_guids]
     )
 
     activity.modules = set(
-        session.scalars(select(Module).where(Module.id.in_(module_ids))).all()
+        session.scalars(select(Module).where(Module.guid.in_(module_guids))).all()
     )
 
     activity.name = activity_model.name
@@ -134,7 +138,7 @@ def update_activity_post(
     return HTMLResponse(
         headers={
             "HX-Location": str(
-                request.url_for("textbook_details", ident=activity.textbook_id)
+                request.url_for("textbook_details", ident=activity.textbook_guid)
             )
         }
     )
@@ -143,7 +147,7 @@ def update_activity_post(
 @router.post("/delete/activity/{ident}", response_class=HTMLResponse)
 def delete_activity(
     request: Request,
-    ident: int,
+    ident: uuid.UUID,
     session: Session,
 ):
     activity = session.get(Activity, ident=ident)
@@ -151,13 +155,13 @@ def delete_activity(
     if not activity:
         raise HTTPException(status_code=404, detail="Activity not found")
 
-    textbook_id = activity.textbook_id
+    textbook_guid = activity.textbook_guid
 
     session.delete(activity)
     session.commit()
 
     return HTMLResponse(
         headers={
-            "HX-Location": str(request.url_for("textbook_details", ident=textbook_id))
+            "HX-Location": str(request.url_for("textbook_details", ident=textbook_guid))
         }
     )

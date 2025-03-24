@@ -7,7 +7,7 @@
 {% block body %}
   <div class="w-full">
     <form.Module
-      :hx-post="request.url_for('update_module_post', ident=module.id)"
+      :hx-post="request.url_for('update_module_post', ident=module.guid)"
       :module="module"
       :textbook_ident="textbook_ident"
       submission-text="Update Module"

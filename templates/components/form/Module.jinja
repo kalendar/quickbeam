@@ -4,11 +4,11 @@
   hx-ext="json-enc"
   {{ attrs.render(class="flex w-[65ch] gap-5 flex-col") }}>
   <div>
-    <label for="name">Module Name
+    <label for="name"
+      >Module Name
       <Tooltip>
-        This is the name of the module. It will be shown to learners. 
+        This is the name of the module. It will be shown to learners.
       </Tooltip>
-
     </label>
     <br />
     <form.TextInput
@@ -19,18 +19,20 @@
       placeholder="My Module" />
   </div>
   <input
-    type="number"
-    name="textbook_id"
-    id="name"
+    type="text"
+    name="textbook_guid"
+    id="text"
     required
     hidden
     value="{{ textbook_ident }}" />
   <div>
-    <label for="outcomes">Module Outcomes
+    <label for="outcomes"
+      >Module Outcomes
       <Tooltip>
-        List the knowledge and skills learners should develop when studying this module.
-        List one outcome per line. Learners may see the items in this list. You can reference
-        this content in Activity Prompts as the information enclosed in the &lt;outcomes&gt; tag.
+        List the knowledge and skills learners should develop when studying this
+        module. List one outcome per line. Learners may see the items in this
+        list. You can reference this content in Activity Prompts as the
+        information enclosed in the &lt;outcomes&gt; tag.
       </Tooltip>
     </label>
     <br />
@@ -41,18 +43,21 @@
       :text="module.outcomes if module else ''" />
   </div>
   <div>
-    <label for="summary">Module Summary
+    <label for="summary"
+      >Module Summary
       <Tooltip>
-        Provide a detailed exposition of the knowledge and skills learners need to develop. This 
-        content will not be shown to learners. The purpose of this material is to provide the LLM 
-        with the information it needs to provide accurate responses during its interaction with learners.
-        This content should read more like a detailed chapter summary and less like an entire textbook 
-        chapter. If your work is based on an existing OER textbook chapter, you might consider 
-        using AI to draft a summary. You might consider including a list of key vocabulary and 
-        definitions. You can reference this content in Activity Prompts as the information 
+        Provide a detailed exposition of the knowledge and skills learners need
+        to develop. This content will not be shown to learners. The purpose of
+        this material is to provide the LLM with the information it needs to
+        provide accurate responses during its interaction with learners. This
+        content should read more like a detailed chapter summary and less like
+        an entire textbook chapter. If your work is based on an existing OER
+        textbook chapter, you might consider using AI to draft a summary. You
+        might consider including a list of key vocabulary and definitions. You
+        can reference this content in Activity Prompts as the information
         enclosed in the &lt;content&gt; tag.
       </Tooltip>
-</label>
+    </label>
     <br />
     <form.TextArea
       name="summary"

@@ -4,9 +4,10 @@
   hx-ext="json-enc"
   {{ attrs.render(class="flex w-[65ch] gap-5 flex-col") }}>
   <div>
-    <label for="name">Activity Name
+    <label for="name"
+      >Activity Name
       <Tooltip>
-        This is the name of the activity. It will be shown to learners. 
+        This is the name of the activity. It will be shown to learners.
       </Tooltip>
     </label>
     <br />
@@ -18,16 +19,17 @@
       placeholder="My Activity" />
   </div>
   <input
-    type="number"
-    name="textbook_id"
+    type="text"
+    name="textbook_guid"
     id="name"
     required
     hidden
     value="{{ textbook_ident }}" />
   <div>
-    <label for="description">Activity Description
+    <label for="description"
+      >Activity Description
       <Tooltip>
-        This is the description of the activity. It will be shown to learners. 
+        This is the description of the activity. It will be shown to learners.
       </Tooltip>
     </label>
     <br />
@@ -39,13 +41,15 @@
       :text="activity.description if activity else ''" />
   </div>
   <div>
-    <label for="prompt">Activity Prompt
+    <label for="prompt"
+      >Activity Prompt
       <Tooltip>
-        These instructions will be added to the system prompt stub and sent to the LLM. They will not be shown to learners. 
-        The instructions should describe an evidence-based teaching or study practice in enough detail for the LLM to be 
-        able to faithfully implement the practice with learners.  
+        These instructions will be added to the system prompt stub and sent to
+        the LLM. They will not be shown to learners. The instructions should
+        describe an evidence-based teaching or study practice in enough detail
+        for the LLM to be able to faithfully implement the practice with
+        learners.
       </Tooltip>
-    
     </label>
     <br />
     <form.TextArea
@@ -56,22 +60,19 @@
       :text="activity.prompt if activity else ''" />
   </div>
   <div>
-    <label for="Modules">Compatible Modules
-      <Tooltip>
-        Select the modules this activity is compatible with.
-      </Tooltip>
-
+    <label for="Modules"
+      >Compatible Modules
+      <Tooltip> Select the modules this activity is compatible with. </Tooltip>
     </label>
     <br />
     <select
-      name="module_ids"
-      id="module_ids"
+      name="module_guids"
+      id="module_guids"
       multiple
       class="w-full overflow-y-auto rounded border border-b-blue-950 bg-gray-50 p-2">
-      <option value="-1" hidden selected="true">force property</option>
       {% for module in modules %}
         <option
-          value="{{ module.id }}"
+          value="{{ module.guid }}"
           class="px-2 focus:bg-gray-100"
           {{ 'selected' if activity and module in activity.modules }}>
           {{ module.name }}

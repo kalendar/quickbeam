@@ -16,8 +16,8 @@
     <div class="grid-cols-adaptive gap-5">
       {% for textbook in textbooks %}
         <a
-          href="{{ request.url_for('textbook_details', ident=textbook.id) }}"
-          class="rounded-2xl bg-slate-100 p-5 border-2 border-gray-300 transition-all duration-75 hover:scale-105">
+          href="{{ request.url_for('textbook_details', ident=textbook.guid) }}"
+          class="rounded-2xl border-2 border-gray-300 bg-slate-100 p-5 transition-all duration-75 hover:scale-105">
           <h2 class="mb-5">{{ textbook.title }}</h2>
           <hr />
           <p class="mt-5">Modules: {{ len(textbook.modules) }}</p>

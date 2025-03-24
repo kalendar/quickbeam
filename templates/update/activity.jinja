@@ -7,7 +7,7 @@
 {% block body %}
   <div class="w-full">
     <form.Activity
-      :hx-post="request.url_for('update_activity_post', ident=activity.id)"
+      :hx-post="request.url_for('update_activity_post', ident=activity.guid)"
       :textbook_ident="textbook_ident"
       :activity="activity"
       :modules="modules"
