@@ -6,7 +6,7 @@ from fastapi.staticfiles import StaticFiles
 from starlette import status
 
 from database import create_db_and_tables
-from routers import activity, module, textbook
+from routers import activity, textbook, topic
 
 
 @asynccontextmanager
@@ -25,7 +25,7 @@ app.mount(
 
 app.include_router(textbook.router)
 app.include_router(activity.router)
-app.include_router(module.router)
+app.include_router(topic.router)
 
 
 @app.get("/")

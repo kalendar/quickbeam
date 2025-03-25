@@ -6,11 +6,11 @@
 
 {% block body %}
   <div class="w-full">
-    <form.Module
-      :hx-post="request.url_for('update_module_post', ident=module.guid)"
-      :module="module"
+    <form.Topic
+      :hx-post="request.url_for('update_topic_post', ident=topic.guid)"
+      :topic="topic"
       :textbook_ident="textbook_ident"
-      submission-text="Update Module"
+      submission-text="Update Topic"
       class="mx-auto" />
   </div>
 {% endblock %}

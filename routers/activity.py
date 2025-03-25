@@ -5,7 +5,7 @@ from fastapi import HTTPException, Request
 from fastapi.responses import HTMLResponse
 from fastapi.routing import APIRouter
 from leaflock.sqlalchemy_tables.activity import Activity
-from leaflock.sqlalchemy_tables.module import Module
+from leaflock.sqlalchemy_tables.topic import Topic
 from pydantic import BaseModel
 from sqlalchemy import select
 
@@ -19,7 +19,7 @@ class ActivityModel(BaseModel):
     description: str
     prompt: str
     textbook_guid: uuid.UUID
-    module_guids: Optional[set[uuid.UUID] | uuid.UUID] = None
+    topic_guids: Optional[set[uuid.UUID] | uuid.UUID] = None
 
 
 @router.get("/create/activity/{textbook_ident}", response_class=HTMLResponse)
@@ -29,14 +29,12 @@ def create_activity_get(
     session: Session,
     templates: Templates,
 ):
-    modules = session.scalars(
-        select(Module).where(Module.textbook_guid == textbook_ident)
-    )
+    topics = session.scalars(select(Topic).where(Topic.textbook_guid == textbook_ident))
 
     return templates.TemplateResponse(
         request=request,
         name="create/activity.jinja",
-        context={"textbook_ident": textbook_ident, "modules": modules},
+        context={"textbook_ident": textbook_ident, "topics": topics},
     )
 
 
@@ -54,15 +52,15 @@ def create_activity_post(
 
     activity.textbook_guid = activity_model.textbook_guid
 
-    # In the case of one selected module, it returns int not list[int]
-    module_ids = (
-        activity_model.module_guids
-        if isinstance(activity_model.module_guids, set)
-        else set([activity_model.module_guids])
+    # In the case of one selected topic, it returns int not list[int]
+    topic_guids = (
+        activity_model.topic_guids
+        if isinstance(activity_model.topic_guids, set)
+        else set([activity_model.topic_guids])
     )
 
-    activity.modules = set(
-        session.scalars(select(Module).where(Module.guid.in_(module_ids))).all()
+    activity.topics = set(
+        session.scalars(select(Topic).where(Topic.guid.in_(topic_guids))).all()
     )
 
     session.add(activity)
@@ -92,8 +90,8 @@ def update_activity_get(
     if not activity:
         raise HTTPException(status_code=404, detail="Activity not found")
 
-    modules = session.scalars(  # type:ignore
-        select(Module).where(Module.textbook_guid == textbook_ident)  # type:ignore
+    topics = session.scalars(  # type:ignore
+        select(Topic).where(Topic.textbook_guid == textbook_ident)  # type:ignore
     )
 
     return templates.TemplateResponse(
@@ -102,7 +100,7 @@ def update_activity_get(
         context={
             "activity": activity,
             "textbook_ident": textbook_ident,
-            "modules": modules,
+            "topics": topics,
         },
     )
 
@@ -119,15 +117,15 @@ def update_activity_post(
     if not activity:
         raise HTTPException(status_code=404, detail="Activity not found")
 
-    # In the case of one selected module, it returns uuid.UUID not list[uuid.UUID]
-    module_guids = (
-        activity_model.module_guids
-        if isinstance(activity_model.module_guids, set)
-        else [activity_model.module_guids]
+    # In the case of one selected topic, it returns uuid.UUID not list[uuid.UUID]
+    topic_guids = (
+        activity_model.topic_guids
+        if isinstance(activity_model.topic_guids, set)
+        else [activity_model.topic_guids]
     )
 
-    activity.modules = set(
-        session.scalars(select(Module).where(Module.guid.in_(module_guids))).all()
+    activity.topics = set(
+        session.scalars(select(Topic).where(Topic.guid.in_(topic_guids))).all()
     )
 
     activity.name = activity_model.name

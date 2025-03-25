@@ -255,7 +255,7 @@ wheels = [
 
 [[package]]
 name = "leaflock"
-version = "0.1.2"
+version = "0.1.4"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "alembic" },
@@ -263,9 +263,9 @@ dependencies = [
     { name = "pydantic" },
     { name = "sqlalchemy" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/cb/14/b8292f1d6969c6ae7e6276c604653109e6eb16462b51f3eb0b27b53df94f/leaflock-0.1.2.tar.gz", hash = "sha256:271d100f36b4d92ddddd24903dad0e110295f3ac623ab0bb2d6ebf2d46411cf3", size = 49800 }
+sdist = { url = "https://files.pythonhosted.org/packages/39/b3/c41b722564c2bae6ce5fea7bb255a5c0d96cfbbdbe1af977255bd461b907/leaflock-0.1.4.tar.gz", hash = "sha256:f80054462556a24bb70a5fa3e7fef88b827ebea20f21c784ecc50333fc7bcf9c", size = 50292 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/61/b5/094d7d70cd93eaa621ca5be9e8c6be8486578a1394b30deb85fc540249da/leaflock-0.1.2-py3-none-any.whl", hash = "sha256:f04bf016018e293b579445555a255c1220b8669bf439b886a0433ab7a8f86f13", size = 25405 },
+    { url = "https://files.pythonhosted.org/packages/31/29/b17c6865911f005ff78ba1f38874c052af856630f80fc824b8c7406e868e/leaflock-0.1.4-py3-none-any.whl", hash = "sha256:af4d277e6f6b3cc864805c7fe37099aa12bf920a4083e42e06eaed87d643eaf7", size = 26382 },
 ]
 
 [[package]]
@@ -392,11 +392,11 @@ wheels = [
 
 [[package]]
 name = "python-dotenv"
-version = "1.0.1"
+version = "1.1.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/bc/57/e84d88dfe0aec03b7a2d4327012c1627ab5f03652216c63d49846d7a6c58/python-dotenv-1.0.1.tar.gz", hash = "sha256:e324ee90a023d808f1959c46bcbc04446a10ced277783dc6ee09987c37ec10ca", size = 39115 }
+sdist = { url = "https://files.pythonhosted.org/packages/88/2c/7bb1416c5620485aa793f2de31d3df393d3686aa8a8506d11e10e13c5baf/python_dotenv-1.1.0.tar.gz", hash = "sha256:41f90bc6f5f177fb41f53e87666db362025010eb28f60a01c9143bfa33a2b2d5", size = 39920 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/6a/3e/b68c118422ec867fa7ab88444e1274aa40681c606d59ac27de5a5588f082/python_dotenv-1.0.1-py3-none-any.whl", hash = "sha256:f7b63ef50f1b690dddf550d03497b66d609393b40b564ed0d674909a68ebf16a", size = 19863 },
+    { url = "https://files.pythonhosted.org/packages/1e/18/98a99ad95133c6a6e2005fe89faedf294a748bd5dc803008059409ac9b1e/python_dotenv-1.1.0-py3-none-any.whl", hash = "sha256:d7c01d9e2293916c18baf562d95698754b0dbbb5e74d457c45d4f6561fb9d55d", size = 20256 },
 ]
 
 [[package]]
@@ -443,7 +443,7 @@ requires-dist = [
     { name = "fastapi", extras = ["standard"], specifier = ">=0.115.11" },
     { name = "jinja2", specifier = ">=3.1.6" },
     { name = "jinjax", specifier = "==0.52" },
-    { name = "leaflock", specifier = ">=0.1.2" },
+    { name = "leaflock", specifier = "==0.1.4" },
     { name = "pydantic-settings", specifier = ">=2.8.1" },
     { name = "sqlalchemy", specifier = ">=2.0.39" },
 ]

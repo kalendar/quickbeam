@@ -1,4 +1,4 @@
-{# def textbook_ident, modules, submission_text="Submit", activity=None #}
+{# def textbook_ident, topics, submission_text="Submit", activity=None #}
 <form
   action=""
   hx-ext="json-enc"
@@ -60,22 +60,22 @@
       :text="activity.prompt if activity else ''" />
   </div>
   <div>
-    <label for="Modules"
-      >Compatible Modules
-      <Tooltip> Select the modules this activity is compatible with. </Tooltip>
+    <label for="Topics"
+      >Compatible Topics
+      <Tooltip> Select the topics this activity is compatible with. </Tooltip>
     </label>
     <br />
     <select
-      name="module_guids"
-      id="module_guids"
+      name="topic_guids"
+      id="topic_guids"
       multiple
       class="w-full overflow-y-auto rounded border border-b-blue-950 bg-gray-50 p-2">
-      {% for module in modules %}
+      {% for topic in topics %}
         <option
-          value="{{ module.guid }}"
+          value="{{ topic.guid }}"
           class="px-2 focus:bg-gray-100"
-          {{ 'selected' if activity and module in activity.modules }}>
-          {{ module.name }}
+          {{ 'selected' if activity and topic in activity.topics }}>
+          {{ topic.name }}
         </option>
       {% endfor %}
     </select>

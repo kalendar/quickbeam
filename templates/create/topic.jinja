@@ -6,10 +6,10 @@
 
 {% block body %}
   <div class="w-full">
-    <form.Module
-      :hx-post="request.url_for('create_module_post')"
+    <form.Topic
+      :hx-post="request.url_for('create_topic_post')"
       :textbook_ident="textbook_ident"
-      submission-text="Create Module"
+      submission-text="Create Topic"
       class="mx-auto" />
   </div>
 {% endblock %}

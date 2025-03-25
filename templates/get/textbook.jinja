@@ -58,24 +58,24 @@
 
     <div class="flex flex-col gap-5">
       <div class="flex w-full items-center justify-between">
-        <h2>Modules</h2>
+        <h2>Topics</h2>
         <AButton
-          :href="{{ request.url_for('create_module_get', textbook_ident=textbook.guid) }}"
+          :href="{{ request.url_for('create_topic_get', textbook_ident=textbook.guid) }}"
           color="green"
           icon="create" />
       </div>
-      {% for module in textbook.modules %}
+      {% for topic in textbook.topics %}
         <div class="flex justify-between">
           <a
             class="text-sky-600 underline"
-            href="{{ request.url_for('update_module_get', module_ident=module.guid, textbook_ident=module.textbook_guid) }}"
-            >{{ module.name }}</a
+            href="{{ request.url_for('update_topic_get', topic_ident=topic.guid, textbook_ident=topic.textbook_guid) }}"
+            >{{ topic.name }}</a
           >
           <AButton
-            :hx-post="request.url_for('delete_module', ident=module.guid)"
+            :hx-post="request.url_for('delete_topic', ident=topic.guid)"
             color="red"
             icon="delete"
-            hx-confirm="Are you sure you want to delete this module?" />
+            hx-confirm="Are you sure you want to delete this topic?" />
         </div>
       {% endfor %}
     </div>

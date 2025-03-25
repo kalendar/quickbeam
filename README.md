@@ -12,7 +12,7 @@ OELM authoring and management.
 4. Enter the virtual environment and run `fastapi run`.
 
 ## Roadmap
-- ✅ Create, update, and delete textbooks, activities, and modules.
+- ✅ Create, update, and delete textbooks, activities, and topics.
 - ⬜ Export/Import textbooks.
 - ⬜ Organize textbooks.
 

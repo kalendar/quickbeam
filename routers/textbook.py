@@ -42,8 +42,6 @@ def textbook_details(
 ):
     textbook = session.get(Textbook, ident=ident)
 
-    print(textbook.guid)
-
     return templates.TemplateResponse(
         request=request,
         name="get/textbook.jinja",
