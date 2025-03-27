@@ -1,8 +1,10 @@
+import tempfile
 import uuid
 
 from fastapi import HTTPException, Request
-from fastapi.responses import HTMLResponse
+from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.routing import APIRouter
+from leaflock.conversion import sqla_to_pydantic
 from leaflock.sqlalchemy_tables.textbook import Textbook
 from pydantic import BaseModel
 from sqlalchemy import select
@@ -126,3 +128,28 @@ def delete_textbook(
     session.commit()
 
     return HTMLResponse(headers={"HX-Location": str(request.url_for("textbooks"))})
+
+
+@router.get("/export/textbook/{ident}")
+def export_textbook(
+    request: Request,
+    ident: uuid.UUID,
+    session: Session,
+):
+    textbook = session.get(Textbook, ident=ident)
+
+    if textbook is None:
+        raise ValueError(f"Textbook with guid: {ident} not found.")
+
+    model = sqla_to_pydantic(sqla_textbook=textbook)
+    json = model.model_dump_json()
+
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".gt") as tmp_file:
+        tmp_file.write(json.encode("utf-8"))
+        tmp_file_path = tmp_file.name
+
+    return FileResponse(
+        path=tmp_file_path,
+        media_type="application/json",
+        filename=f"{textbook.title}.gt",
+    )
