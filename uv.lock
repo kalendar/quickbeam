@@ -255,7 +255,7 @@ wheels = [
 
 [[package]]
 name = "leaflock"
-version = "0.1.4"
+version = "0.1.8"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "alembic" },
@@ -263,9 +263,9 @@ dependencies = [
     { name = "pydantic" },
     { name = "sqlalchemy" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/39/b3/c41b722564c2bae6ce5fea7bb255a5c0d96cfbbdbe1af977255bd461b907/leaflock-0.1.4.tar.gz", hash = "sha256:f80054462556a24bb70a5fa3e7fef88b827ebea20f21c784ecc50333fc7bcf9c", size = 50292 }
+sdist = { url = "https://files.pythonhosted.org/packages/e2/ec/5ac3e691522b103146d520b8332fae664218e2d4172f26d1650b4d74fa01/leaflock-0.1.8.tar.gz", hash = "sha256:3f614a227b744e875a4ac815770a061fea0c2d630e9ad9d2ab79fa254efb1645", size = 52408 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/31/29/b17c6865911f005ff78ba1f38874c052af856630f80fc824b8c7406e868e/leaflock-0.1.4-py3-none-any.whl", hash = "sha256:af4d277e6f6b3cc864805c7fe37099aa12bf920a4083e42e06eaed87d643eaf7", size = 26382 },
+    { url = "https://files.pythonhosted.org/packages/25/39/5424edc91c86ed6fb37d82808c4d2522f169ae5b590041f18a816d327554/leaflock-0.1.8-py3-none-any.whl", hash = "sha256:f805ffbb6b3bf7bdc32fe2408f39af612a116e4bdb8b435996d562b47158aae2", size = 28277 },
 ]
 
 [[package]]
@@ -443,7 +443,7 @@ requires-dist = [
     { name = "fastapi", extras = ["standard"], specifier = ">=0.115.11" },
     { name = "jinja2", specifier = ">=3.1.6" },
     { name = "jinjax", specifier = "==0.52" },
-    { name = "leaflock", specifier = "==0.1.4" },
+    { name = "leaflock", specifier = "==0.1.8" },
     { name = "pydantic-settings", specifier = ">=2.8.1" },
     { name = "sqlalchemy", specifier = ">=2.0.39" },
 ]

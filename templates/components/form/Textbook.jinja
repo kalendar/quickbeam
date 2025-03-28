@@ -50,6 +50,11 @@
       id="authors"
       required
       :text="textbook.authors if textbook else ''" />
+    <form.TextArea
+      name="reviewers"
+      id="reviewers"
+      required
+      :text="textbook.reviewers if textbook else ''" />
   </div>
   <input
     type="submit"

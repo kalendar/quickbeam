@@ -13,8 +13,13 @@ router = APIRouter()
 
 class TopicModel(BaseModel):
     name: str
+
     outcomes: str
     summary: str
+
+    sources: str
+    authors: str
+
     textbook_guid: uuid.UUID
 
 
@@ -41,6 +46,8 @@ def create_topic_post(
         name=topic_model.name,
         outcomes=topic_model.outcomes,
         summary=topic_model.summary,
+        sources=topic_model.sources,
+        authors=topic_model.authors,
     )
 
     topic.textbook_guid = topic_model.textbook_guid
@@ -57,9 +64,7 @@ def create_topic_post(
     )
 
 
-@router.get(
-    "/update/topic/{topic_ident}/{textbook_ident}", response_class=HTMLResponse
-)
+@router.get("/update/topic/{topic_ident}/{textbook_ident}", response_class=HTMLResponse)
 def update_topic_get(
     request: Request,
     topic_ident: uuid.UUID,

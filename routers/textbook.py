@@ -16,8 +16,11 @@ router = APIRouter()
 
 class TextbookModel(BaseModel):
     title: str
+
     prompt: str
+
     authors: str
+    reviewers: str
 
 
 @router.get("/textbooks", response_class=HTMLResponse)

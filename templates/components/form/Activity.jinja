@@ -58,6 +58,16 @@
       rows="10"
       required
       :text="activity.prompt if activity else ''" />
+    <form.TextArea
+      name="sources"
+      id="sources"
+      required
+      :text="activity.sources if activity else ''" />
+    <form.TextArea
+      name="authors"
+      id="authors"
+      required
+      :text="activity.authors if activity else ''" />
   </div>
   <div>
     <label for="Topics"

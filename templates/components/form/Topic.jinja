@@ -64,6 +64,16 @@
       id="summary"
       required
       :text="topic.summary if topic else ''" />
+    <form.TextArea
+      name="sources"
+      id="sources"
+      required
+      :text="topic.sources if topic else ''" />
+    <form.TextArea
+      name="authors"
+      id="authors"
+      required
+      :text="topic.authors if topic else ''" />
   </div>
   <input
     type="submit"

@@ -16,8 +16,13 @@ router = APIRouter()
 
 class ActivityModel(BaseModel):
     name: str
+
     description: str
     prompt: str
+
+    sources: str
+    authors: str
+
     textbook_guid: uuid.UUID
     topic_guids: Optional[set[uuid.UUID] | uuid.UUID] = None
 
@@ -48,6 +53,8 @@ def create_activity_post(
         name=activity_model.name,
         description=activity_model.description,
         prompt=activity_model.prompt,
+        authors=activity_model.authors,
+        sources=activity_model.sources,
     )
 
     activity.textbook_guid = activity_model.textbook_guid
