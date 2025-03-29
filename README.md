@@ -1,5 +1,5 @@
 # quickbeam
-OELM authoring and management.
+Quickbeam is a tool for authoring and managing generative textbooks, based on Open Educational Language Models.
 
 ## Installation
 ### Prerequisite
