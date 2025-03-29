@@ -7,7 +7,7 @@
   <div>
     <label for="name"
       >Title
-      <Tooltip>Enter the title of your textbook here.</Tooltip>
+      <Tooltip>This is the title of your textbook. It will be shown to learners.</Tooltip>
     </label>
     <br />
     <form.TextInput
@@ -15,7 +15,7 @@
       id="title"
       required
       :value="textbook.title if textbook else ''"
-      placeholder="My Textbook" />
+      placeholder="This is the title of your textbook. It will be shown to learners." />
   </div>
   <div>
     <label for="prompt"
@@ -34,6 +34,7 @@
       name="prompt"
       id="prompt"
       required
+      placeholder="This is the system prompt stub. This language will be included in every prompt sent to the LLM, so should not include details about specific topics or pedagogies. It might include information about the overall course topic, as well as information about personality, voice, and tone. For example, 'You are an empathetic, caring, supportive tutor for an undergraduate Introduction to Psychology course.'"
       :text="textbook.prompt if textbook else ''" />
   </div>
   <div>
@@ -49,13 +50,25 @@
       name="authors"
       id="authors"
       required
+      placeholder="* FirstName LastName\n* FirstName LastName"
       :text="textbook.authors if textbook else ''" />
+  </div>
+  <div>
+    <label for="reviewers"
+      >Peer Reviewers
+      <Tooltip>
+        List the people who peer reviewed this generative textbook. One name per line.
+      </Tooltip>
+    </label>
+
     <form.TextArea
       name="reviewers"
       id="reviewers"
       required
+      placeholder="* FirstName LastName\n* FirstName LastName"
       :text="textbook.reviewers if textbook else ''" />
   </div>
+
   <input
     type="submit"
     value="{{ submission_text }}"
