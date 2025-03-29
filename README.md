@@ -47,9 +47,9 @@ It is recommended to use Visual Studio Code (VSCode), as a `.vscode` workspace s
 
 ### Instructions
 1. Clone this repo with `git clone https://github.com/kalendar/quickbeam.git --recurse-submodules`.
-2. Initialize it with `uv sync`.
+2. Initialize it with `uv sync --extra dev`.
 3. Set the environment variable `quickbeam_sqlite_database_path` to a valid sqlite database path. If no database file exists, it will be created. 
-4. Enter the virtual environment and run `fastapi dev`.
+4. Enter the virtual environment and run `pre-commit install`, then `fastapi dev`.
 5. To watch and compile CSS changes, run `npx tailwindcss -i ./src/input.css -o ./static/main.css --watch` in the root directory.
 
 ### Python Types
