@@ -3,10 +3,10 @@ import uuid
 from fastapi import HTTPException, Request
 from fastapi.responses import HTMLResponse
 from fastapi.routing import APIRouter
-from leaflock.sqlalchemy_tables.topic import Topic
 from pydantic import BaseModel
 
 from dependencies import Session, Templates
+from leaflock.sqlalchemy_tables.topic import Topic
 
 router = APIRouter()
 
@@ -103,6 +103,8 @@ def update_topic_post(
     topic.outcomes = topic_model.outcomes
     topic.summary = topic_model.summary
     topic.textbook_guid = topic_model.textbook_guid
+    topic.authors = topic_model.authors
+    topic.sources = topic_model.sources
 
     session.commit()
 

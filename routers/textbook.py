@@ -4,12 +4,12 @@ import uuid
 from fastapi import HTTPException, Request
 from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.routing import APIRouter
-from leaflock.conversion import sqla_to_pydantic
-from leaflock.sqlalchemy_tables.textbook import Textbook
 from pydantic import BaseModel
 from sqlalchemy import select
 
 from dependencies import Session, Templates
+from leaflock.conversion import sqla_to_pydantic
+from leaflock.sqlalchemy_tables.textbook import Textbook
 
 router = APIRouter()
 
@@ -108,6 +108,7 @@ def update_textbook_post(
     textbook.title = textbook_model.title
     textbook.prompt = textbook_model.prompt
     textbook.authors = textbook_model.authors
+    textbook.reviewers = textbook_model.reviewers
 
     session.commit()
 

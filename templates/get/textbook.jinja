@@ -44,7 +44,7 @@
           color="green"
           icon="create" />
       </div>
-      {% for topic in textbook.topics %}
+      {% for topic in textbook.topics | sort(attribute="name") %}
         <div class="flex justify-between">
           <a
             class="text-sky-600 underline"

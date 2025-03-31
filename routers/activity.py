@@ -4,12 +4,12 @@ from typing import Optional
 from fastapi import HTTPException, Request
 from fastapi.responses import HTMLResponse
 from fastapi.routing import APIRouter
-from leaflock.sqlalchemy_tables.activity import Activity
-from leaflock.sqlalchemy_tables.topic import Topic
 from pydantic import BaseModel
 from sqlalchemy import select
 
 from dependencies import Session, Templates
+from leaflock.sqlalchemy_tables.activity import Activity
+from leaflock.sqlalchemy_tables.topic import Topic
 
 router = APIRouter()
 
@@ -138,6 +138,9 @@ def update_activity_post(
     activity.name = activity_model.name
     activity.description = activity_model.description
     activity.prompt = activity_model.prompt
+    activity.authors = activity_model.authors
+    activity.sources = activity_model.sources
+
     session.commit()
 
     return HTMLResponse(
