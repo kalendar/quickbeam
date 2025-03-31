@@ -7,7 +7,9 @@
   <div>
     <label for="name"
       >Title
-      <Tooltip>This is the title of your textbook. It will be shown to learners.</Tooltip>
+      <Tooltip>
+        This is the title of your textbook. It will be shown to learners.
+      </Tooltip>
     </label>
     <br />
     <form.TextInput
@@ -16,6 +18,43 @@
       required
       :value="textbook.title if textbook else ''"
       placeholder="This is the title of your textbook. It will be shown to learners." />
+  </div>
+  <div>
+    <label for="status"
+      >Status
+      <Tooltip>
+        This is the publishing status of your textbook. Draft is private,
+        published is public.
+      </Tooltip>
+    </label>
+    <br />
+    <select name="status" id="status">
+      <option
+        value="draft"
+        {{ 'selected' if textbook and textbook.status == 'draft' else '' }}>
+        Draft
+      </option>
+      <option
+        value="published"
+        {{ 'selected' if textbook and textbook.status == 'published' else '' }}>
+        Published
+      </option>
+    </select>
+  </div>
+  <div>
+    <label for="edition"
+      >Edition
+      <Tooltip>
+        This is the edition of your textbook. It will be shown to learners.
+      </Tooltip>
+    </label>
+    <br />
+    <form.TextInput
+      name="edition"
+      id="edition"
+      required
+      :value="textbook.edition if textbook and textbook.edition else ''"
+      placeholder="First Edition" />
   </div>
   <div>
     <label for="prompt"
@@ -51,13 +90,14 @@
       id="authors"
       required
       placeholder="* FirstName LastName\n* FirstName LastName"
-      :text="textbook.authors if textbook else ''" />
+      :text="textbook.authors if textbook and textbook.authors else ''" />
   </div>
   <div>
     <label for="reviewers"
       >Peer Reviewers
       <Tooltip>
-        List the people who peer reviewed this generative textbook. One name per line.
+        List the people who peer reviewed this generative textbook. One name per
+        line.
       </Tooltip>
     </label>
 
@@ -66,7 +106,7 @@
       id="reviewers"
       required
       placeholder="* FirstName LastName\n* FirstName LastName"
-      :text="textbook.reviewers if textbook else ''" />
+      :text="textbook.reviewers if textbook and textbook.reviewers else ''" />
   </div>
 
   <input

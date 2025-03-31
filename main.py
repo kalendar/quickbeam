@@ -3,15 +3,16 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
 from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
+from leaflock.database import create_database
 from starlette import status
 
-from database import create_db_and_tables
 from routers import activity, textbook, topic
+from settings import SETTINGS
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    create_db_and_tables()
+    create_database(database_path=SETTINGS.sqlite_database_path)
     yield
 
 

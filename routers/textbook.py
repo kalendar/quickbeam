@@ -4,18 +4,21 @@ import uuid
 from fastapi import HTTPException, Request
 from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.routing import APIRouter
+from leaflock.conversion import sqla_to_pydantic
+from leaflock.sqlalchemy_tables.textbook import Textbook, TextbookStatus
 from pydantic import BaseModel
 from sqlalchemy import select
 
 from dependencies import Session, Templates
-from leaflock.conversion import sqla_to_pydantic
-from leaflock.sqlalchemy_tables.textbook import Textbook
 
 router = APIRouter()
 
 
 class TextbookModel(BaseModel):
     title: str
+
+    status: TextbookStatus
+    edition: str
 
     prompt: str
 
@@ -106,6 +109,8 @@ def update_textbook_post(
         raise HTTPException(status_code=404, detail="Textbook not found")
 
     textbook.title = textbook_model.title
+    textbook.status = textbook_model.status
+    textbook.edition = textbook_model.edition
     textbook.prompt = textbook_model.prompt
     textbook.authors = textbook_model.authors
     textbook.reviewers = textbook_model.reviewers
