@@ -4,8 +4,7 @@
   hx-ext="json-enc"
   {{ attrs.render(class="flex w-[65ch] gap-5 flex-col") }}>
   <div>
-    <label for="name"
-      class="font-bold text-lg"
+    <label for="name" class="text-lg font-bold"
       >Topic Name
       <Tooltip>
         This is the name of the topic. It will be shown to learners.
@@ -27,8 +26,7 @@
     hidden
     value="{{ textbook_ident }}" />
   <div>
-    <label for="outcomes"
-      class="font-bold text-lg"
+    <label for="outcomes" class="text-lg font-bold"
       >Topic Outcomes
       <Tooltip>
         List the knowledge and skills learners should develop when studying this
@@ -46,8 +44,7 @@
       :text="topic.outcomes if topic else ''" />
   </div>
   <div>
-    <label for="summary"
-      class="font-bold text-lg"
+    <label for="summary" class="text-lg font-bold"
       >Topic Summary
       <Tooltip>
         Provide a detailed exposition of the knowledge and skills learners need
@@ -71,8 +68,7 @@
       :text="topic.summary if topic else ''" />
   </div>
   <div>
-    <label for="sources"
-      class="font-bold text-lg"
+    <label for="sources" class="text-lg font-bold"
       >Topic Sources
       <Tooltip>
         Here you can optionally include any sources you referenced in the
@@ -91,8 +87,7 @@
       :text="topic.sources if topic else ''" />
   </div>
   <div>
-    <label for="authors"
-      class="font-bold text-lg"
+    <label for="authors" class="text-lg font-bold"
       >Topic Authors
       <Tooltip>
         List all the authors who contributed to this Topic. One name per line.

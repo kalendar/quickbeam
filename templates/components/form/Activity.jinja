@@ -4,8 +4,7 @@
   hx-ext="json-enc"
   {{ attrs.render(class="flex w-[65ch] gap-5 flex-col") }}>
   <div>
-    <label for="name"
-      class="font-bold text-lg"
+    <label for="name" class="text-lg font-bold"
       >Activity Name
       <Tooltip>
         This is the name of the activity. It will be shown to learners.
@@ -27,8 +26,7 @@
     hidden
     value="{{ textbook_ident }}" />
   <div>
-    <label for="description"
-      class="font-bold text-lg"
+    <label for="description" class="text-lg font-bold"
       >Activity Description
       <Tooltip>
         This is the description of the activity. It will be shown to learners.
@@ -44,8 +42,7 @@
       :text="activity.description if activity else ''" />
   </div>
   <div>
-    <label for="prompt"
-      class="font-bold text-lg"
+    <label for="prompt" class="text-lg font-bold"
       >Activity Prompt
       <Tooltip>
         These instructions will be added to the system prompt stub and sent to
@@ -65,8 +62,7 @@
       :text="activity.prompt if activity else ''" />
   </div>
   <div>
-    <label for="sources"
-      class="font-bold text-lg"
+    <label for="sources" class="text-lg font-bold"
       >Activity Sources
       <Tooltip>
         Here you can optionally include any sources you referenced in the
@@ -85,8 +81,7 @@
       :text="activity.sources if activity else ''" />
   </div>
   <div>
-    <label for="authors"
-      class="font-bold text-lg"
+    <label for="authors" class="text-lg font-bold"
       >Activity Authors
       <Tooltip>
         List all the authors who contributed to this Activity. One name per
@@ -103,8 +98,7 @@
   </div>
 
   <div>
-    <label for="Topics"
-      class="font-bold text-lg"
+    <label for="Topics" class="text-lg font-bold"
       >Compatible Topics
       <Tooltip> Select the topics this activity is compatible with. </Tooltip>
     </label>

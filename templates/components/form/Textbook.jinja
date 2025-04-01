@@ -5,8 +5,7 @@
   hx-ext="json-enc"
   {{ attrs.render(class="flex w-[65ch] gap-5 flex-col") }}>
   <div>
-    <label for="name"
-      class="font-bold text-lg"
+    <label for="name" class="text-lg font-bold"
       >Title
       <Tooltip>
         This is the title of your textbook. It will be shown to learners.
@@ -21,8 +20,7 @@
       placeholder="This is the title of your textbook. It will be shown to learners." />
   </div>
   <div>
-    <label for="status"
-    class="font-bold text-lg"
+    <label for="status" class="text-lg font-bold"
       >Status
       <Tooltip>
         This is the publishing status of your textbook. Draft is private,
@@ -44,8 +42,7 @@
     </select>
   </div>
   <div>
-    <label for="edition"
-      class="font-bold text-lg"
+    <label for="edition" class="text-lg font-bold"
       >Edition
       <Tooltip>
         This is the edition of your textbook. It will be shown to learners.
@@ -60,9 +57,7 @@
       placeholder="First Edition" />
   </div>
   <div>
-    <label for="prompt"
-      class="font-bold text-lg"
-
+    <label for="prompt" class="text-lg font-bold"
       >System Prompt Stub
       <Tooltip>
         This is the system prompt stub. This language will be included in every
@@ -82,8 +77,7 @@
       :text="textbook.prompt if textbook else ''" />
   </div>
   <div>
-    <label for="authors"
-      class="font-bold text-lg"
+    <label for="authors" class="text-lg font-bold"
       >Authors
       <Tooltip>
         List the authors who contributed to this generative textbook. One name
@@ -96,13 +90,12 @@
       id="authors"
       required
       placeholder="FirstName LastName\nFirstName LastName"
-      :text="textbook.authors if textbook else ''" 
+      :text="textbook.authors if textbook else ''"
       placeholder="* FirstName LastName\n* FirstName LastName"
       :text="textbook.authors if textbook and textbook.authors else ''" />
   </div>
   <div>
-    <label for="reviewers"
-      class="font-bold text-lg"
+    <label for="reviewers" class="text-lg font-bold"
       >Peer Reviewers
       <Tooltip>
         List the people who peer reviewed this generative textbook. One name per
