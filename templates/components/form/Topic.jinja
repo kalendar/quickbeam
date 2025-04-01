@@ -43,7 +43,6 @@
       id="outcomes"
       required
       placeholder="* Outcome 1\n* Outcome 2\n* Outcome 3"
-
       :text="topic.outcomes if topic else ''" />
   </div>
   <div>
@@ -70,15 +69,16 @@
       required
       placeholder="Provide a detailed exposition of the knowledge and skills learners need to develop. This content will not be shown to learners. The purpose of this material is to provide the LLM with the information it needs to provide accurate responses during its interaction with learners. This content should read more like a detailed chapter summary and less like an entire textbook chapter. If your work is based on an existing OER textbook chapter, you might consider using AI to draft a summary. You might consider including a list of key vocabulary and definitions. You can reference this content in Activity Prompts as the information enclosed in the &lt;content&gt; tag."
       :text="topic.summary if topic else ''" />
-</div>
+  </div>
   <div>
     <label for="sources"
       class="font-bold text-lg"
       >Topic Sources
       <Tooltip>
-        Here you can optionally include any sources you referenced in the creation of this Topic.
-        If you're attributing an OER, make sure to include a Title, Author, Source (URL), and License
-        as per the Creative Commons best practices for attribution.
+        Here you can optionally include any sources you referenced in the
+        creation of this Topic. If you're attributing an OER, make sure to
+        include a Title, Author, Source (URL), and License as per the Creative
+        Commons best practices for attribution.
       </Tooltip>
     </label>
     <br />
@@ -89,13 +89,13 @@
       placeholder="Here you can optionally include any sources you referenced in the creation of this Topic.
         If you're attributing an OER, make sure to include a Title, Author, Source (URL), and License as per the Creative Commons best practices for attribution."
       :text="topic.sources if topic else ''" />
-</div>
+  </div>
   <div>
     <label for="authors"
       class="font-bold text-lg"
       >Topic Authors
       <Tooltip>
-      List all the authors who contributed to this Topic. One name per line.
+        List all the authors who contributed to this Topic. One name per line.
       </Tooltip>
     </label>
     <br />

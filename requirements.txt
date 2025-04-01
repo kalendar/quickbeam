@@ -89,9 +89,9 @@ jinja2==3.1.6 \
 jinjax==0.52 \
     --hash=sha256:0e030a8139d4118f2bac47fbedf761dc1144e82d37347f9c387f3a8a0d1f8700 \
     --hash=sha256:e62f7da12edb918c3ff9fddf8f09e806b1cd220a390d773ee0e8a6c053ede009
-leaflock==0.1.8 \
-    --hash=sha256:3f614a227b744e875a4ac815770a061fea0c2d630e9ad9d2ab79fa254efb1645 \
-    --hash=sha256:f805ffbb6b3bf7bdc32fe2408f39af612a116e4bdb8b435996d562b47158aae2
+leaflock==0.2.1 \
+    --hash=sha256:7343ea50ebbb9ed0feb325a153c0bfa3bc49cbf26d7fdcb6b5bb784f802b07f7 \
+    --hash=sha256:eda8f71e44df14fe081716daafe3d8ab3f1cdf1bdbec94a7e4e8c974bc87961f
 mako==1.3.9 \
     --hash=sha256:95920acccb578427a9aa38e37a186b1e43156c87260d7ba18ca63aa4c7cbd3a1 \
     --hash=sha256:b5d65ff3462870feec922dbccf38f6efb44e5714d7b593a656be86663d8600ac

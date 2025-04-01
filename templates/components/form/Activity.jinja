@@ -63,15 +63,16 @@
       required
       placeholder="These instructions will be added to the system prompt stub and sent to the LLM. They will not be shown to learners. The instructions should describe an evidence-based teaching or study practice in enough detail for the LLM to be able to faithfully implement the practice with learners."
       :text="activity.prompt if activity else ''" />
-</div>
+  </div>
   <div>
     <label for="sources"
       class="font-bold text-lg"
       >Activity Sources
       <Tooltip>
-        Here you can optionally include any sources you referenced in the creation of this Activity.
-        If you're attributing an OER, make sure to include a Title, Author, Source (URL), and License
-        as per the Creative Commons best practices for attribution.
+        Here you can optionally include any sources you referenced in the
+        creation of this Activity. If you're attributing an OER, make sure to
+        include a Title, Author, Source (URL), and License as per the Creative
+        Commons best practices for attribution.
       </Tooltip>
     </label>
     <br />
@@ -82,13 +83,14 @@
       placeholder="Here you can optionally include any sources you referenced in the creation of this Activity.
         If you're attributing an OER, make sure to include a Title, Author, Source (URL), and License as per the Creative Commons best practices for attribution."
       :text="activity.sources if activity else ''" />
-</div>
+  </div>
   <div>
     <label for="authors"
       class="font-bold text-lg"
       >Activity Authors
       <Tooltip>
-      List all the authors who contributed to this Activity. One name per line.
+        List all the authors who contributed to this Activity. One name per
+        line.
       </Tooltip>
     </label>
     <br />
