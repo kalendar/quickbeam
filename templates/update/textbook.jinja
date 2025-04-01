@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-  <div class="w-full">
+  <div class="w-full mt-10 mb-20">
     <form.Textbook
       :hx-post="request.url_for('update_textbook_post', ident=textbook.guid)"
       :textbook="textbook"
