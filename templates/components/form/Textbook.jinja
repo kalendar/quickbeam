@@ -6,6 +6,7 @@
   {{ attrs.render(class="flex w-[65ch] gap-5 flex-col") }}>
   <div>
     <label for="name"
+      class="font-bold text-lg"
       >Title
       <Tooltip>This is the title of your textbook. It will be shown to learners.</Tooltip>
     </label>
@@ -19,6 +20,8 @@
   </div>
   <div>
     <label for="prompt"
+      class="font-bold text-lg"
+
       >System Prompt Stub
       <Tooltip>
         This is the system prompt stub. This language will be included in every
@@ -39,6 +42,7 @@
   </div>
   <div>
     <label for="authors"
+      class="font-bold text-lg"
       >Authors
       <Tooltip>
         List the authors who contributed to this generative textbook. One name
@@ -50,11 +54,12 @@
       name="authors"
       id="authors"
       required
-      placeholder="* FirstName LastName\n* FirstName LastName"
+      placeholder="FirstName LastName\nFirstName LastName"
       :text="textbook.authors if textbook else ''" />
   </div>
   <div>
     <label for="reviewers"
+      class="font-bold text-lg"
       >Peer Reviewers
       <Tooltip>
         List the people who peer reviewed this generative textbook. One name per line.
@@ -65,7 +70,7 @@
       name="reviewers"
       id="reviewers"
       required
-      placeholder="* FirstName LastName\n* FirstName LastName"
+      placeholder="No Reviewers Yet"
       :text="textbook.reviewers if textbook else ''" />
   </div>
 

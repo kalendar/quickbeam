@@ -5,6 +5,7 @@
   {{ attrs.render(class="flex w-[65ch] gap-5 flex-col") }}>
   <div>
     <label for="name"
+      class="font-bold text-lg"
       >Topic Name
       <Tooltip>
         This is the name of the topic. It will be shown to learners.
@@ -27,6 +28,7 @@
     value="{{ textbook_ident }}" />
   <div>
     <label for="outcomes"
+      class="font-bold text-lg"
       >Topic Outcomes
       <Tooltip>
         List the knowledge and skills learners should develop when studying this
@@ -46,6 +48,7 @@
   </div>
   <div>
     <label for="summary"
+      class="font-bold text-lg"
       >Topic Summary
       <Tooltip>
         Provide a detailed exposition of the knowledge and skills learners need
@@ -70,6 +73,7 @@
 </div>
   <div>
     <label for="sources"
+      class="font-bold text-lg"
       >Topic Sources
       <Tooltip>
         Here you can optionally include any sources you referenced in the creation of this Topic.
@@ -88,6 +92,7 @@
 </div>
   <div>
     <label for="authors"
+      class="font-bold text-lg"
       >Topic Authors
       <Tooltip>
       List all the authors who contributed to this Topic. One name per line.
@@ -98,7 +103,7 @@
       name="authors"
       id="authors"
       required
-      placeholder="* FirstName LastName\n* FirstName LastName"
+      placeholder="FirstName LastName\nFirstName LastName"
       :text="topic.authors if topic else ''" />
   </div>
   <input
