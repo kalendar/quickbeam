@@ -7,7 +7,7 @@ from fastapi.routing import APIRouter
 from pydantic import BaseModel
 from sqlalchemy import select
 
-from dependencies import Session, Templates
+from dependencies import ReadSession, Templates, WriteSession
 from leaflock.sqlalchemy_tables.activity import Activity
 from leaflock.sqlalchemy_tables.topic import Topic
 
@@ -31,7 +31,7 @@ class ActivityModel(BaseModel):
 def create_activity_get(
     request: Request,
     textbook_ident: uuid.UUID,
-    session: Session,
+    session: ReadSession,
     templates: Templates,
 ):
     topics = session.scalars(select(Topic).where(Topic.textbook_guid == textbook_ident))
@@ -47,7 +47,7 @@ def create_activity_get(
 def create_activity_post(
     request: Request,
     activity_model: ActivityModel,
-    session: Session,
+    session: WriteSession,
 ):
     activity = Activity(
         name=activity_model.name,
@@ -71,7 +71,6 @@ def create_activity_post(
     )
 
     session.add(activity)
-    session.commit()
 
     return HTMLResponse(
         headers={
@@ -89,7 +88,7 @@ def update_activity_get(
     request: Request,
     activity_ident: uuid.UUID,
     textbook_ident: uuid.UUID,
-    session: Session,
+    session: ReadSession,
     templates: Templates,
 ):
     activity = session.get(Activity, ident=activity_ident)
@@ -116,7 +115,7 @@ def update_activity_get(
 def update_activity_post(
     request: Request,
     ident: uuid.UUID,
-    session: Session,
+    session: WriteSession,
     activity_model: ActivityModel,
 ):
     activity = session.get(Activity, ident=ident)
@@ -141,7 +140,8 @@ def update_activity_post(
     activity.authors = activity_model.authors
     activity.sources = activity_model.sources
 
-    session.commit()
+    # Ensure dirty
+    session.add(activity)
 
     return HTMLResponse(
         headers={
@@ -156,7 +156,7 @@ def update_activity_post(
 def delete_activity(
     request: Request,
     ident: uuid.UUID,
-    session: Session,
+    session: WriteSession,
 ):
     activity = session.get(Activity, ident=ident)
 
@@ -166,7 +166,6 @@ def delete_activity(
     textbook_guid = activity.textbook_guid
 
     session.delete(activity)
-    session.commit()
 
     return HTMLResponse(
         headers={

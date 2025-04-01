@@ -5,7 +5,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.routing import APIRouter
 from pydantic import BaseModel
 
-from dependencies import Session, Templates
+from dependencies import ReadSession, Templates, WriteSession
 from leaflock.sqlalchemy_tables.topic import Topic
 
 router = APIRouter()
@@ -40,7 +40,7 @@ def create_topic_get(
 def create_topic_post(
     request: Request,
     topic_model: TopicModel,
-    session: Session,
+    session: WriteSession,
 ):
     topic = Topic(
         name=topic_model.name,
@@ -53,7 +53,6 @@ def create_topic_post(
     topic.textbook_guid = topic_model.textbook_guid
 
     session.add(topic)
-    session.commit()
 
     return HTMLResponse(
         headers={
@@ -69,7 +68,7 @@ def update_topic_get(
     request: Request,
     topic_ident: uuid.UUID,
     textbook_ident: uuid.UUID,
-    session: Session,
+    session: ReadSession,
     templates: Templates,
 ):
     topic = session.get(Topic, ident=topic_ident)
@@ -91,7 +90,7 @@ def update_topic_get(
 def update_topic_post(
     request: Request,
     ident: uuid.UUID,
-    session: Session,
+    session: WriteSession,
     topic_model: TopicModel,
 ):
     topic = session.get(Topic, ident=ident)
@@ -106,7 +105,8 @@ def update_topic_post(
     topic.authors = topic_model.authors
     topic.sources = topic_model.sources
 
-    session.commit()
+    # Ensure dirty
+    session.add(topic)
 
     return HTMLResponse(
         headers={
@@ -121,7 +121,7 @@ def update_topic_post(
 def delete_topic(
     request: Request,
     ident: uuid.UUID,
-    session: Session,
+    session: WriteSession,
 ):
     topic = session.get(Topic, ident=ident)
 
@@ -131,7 +131,6 @@ def delete_topic(
     textbook_guid = topic.textbook_guid
 
     session.delete(topic)
-    session.commit()
 
     return HTMLResponse(
         headers={

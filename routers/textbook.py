@@ -4,12 +4,12 @@ import uuid
 from fastapi import HTTPException, Request
 from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.routing import APIRouter
-from leaflock.conversion import sqla_to_pydantic
-from leaflock.sqlalchemy_tables.textbook import Textbook, TextbookStatus
 from pydantic import BaseModel
 from sqlalchemy import select
 
-from dependencies import Session, Templates
+from dependencies import ReadSession, Templates, WriteSession
+from leaflock.conversion import sqla_to_pydantic
+from leaflock.sqlalchemy_tables.textbook import Textbook, TextbookStatus
 
 router = APIRouter()
 
@@ -29,7 +29,7 @@ class TextbookModel(BaseModel):
 @router.get("/textbooks", response_class=HTMLResponse)
 def textbooks(
     request: Request,
-    session: Session,
+    session: ReadSession,
     templates: Templates,
 ):
     textbooks = session.scalars(select(Textbook)).all()
@@ -45,7 +45,7 @@ def textbooks(
 def textbook_details(
     request: Request,
     ident: uuid.UUID,
-    session: Session,
+    session: ReadSession,
     templates: Templates,
 ):
     textbook = session.get(Textbook, ident=ident)
@@ -72,10 +72,9 @@ def create_textbook_get(
 def create_textbook_post(
     request: Request,
     textbook_model: TextbookModel,
-    session: Session,
+    session: WriteSession,
 ):
     session.add(Textbook(**textbook_model.model_dump()))
-    session.commit()
 
     return HTMLResponse(headers={"HX-Location": str(request.url_for("textbooks"))})
 
@@ -84,7 +83,7 @@ def create_textbook_post(
 def update_textbook_get(
     request: Request,
     ident: uuid.UUID,
-    session: Session,
+    session: ReadSession,
     templates: Templates,
 ):
     textbook = session.get(Textbook, ident=ident)
@@ -100,7 +99,7 @@ def update_textbook_get(
 def update_textbook_post(
     request: Request,
     ident: uuid.UUID,
-    session: Session,
+    session: WriteSession,
     textbook_model: TextbookModel,
 ):
     textbook = session.get(Textbook, ident=ident)
@@ -115,7 +114,8 @@ def update_textbook_post(
     textbook.authors = textbook_model.authors
     textbook.reviewers = textbook_model.reviewers
 
-    session.commit()
+    # Ensure dirty
+    session.add(textbook)
 
     return HTMLResponse(
         headers={"HX-Location": str(request.url_for("textbook_details", ident=ident))}
@@ -126,7 +126,7 @@ def update_textbook_post(
 def delete_textbook(
     request: Request,
     ident: uuid.UUID,
-    session: Session,
+    session: WriteSession,
 ):
     textbook = session.get(Textbook, ident=ident)
 
@@ -134,7 +134,6 @@ def delete_textbook(
         raise HTTPException(status_code=404, detail="Textbook not found")
 
     session.delete(textbook)
-    session.commit()
 
     return HTMLResponse(headers={"HX-Location": str(request.url_for("textbooks"))})
 
@@ -143,7 +142,7 @@ def delete_textbook(
 def export_textbook(
     request: Request,
     ident: uuid.UUID,
-    session: Session,
+    session: ReadSession,
 ):
     textbook = session.get(Textbook, ident=ident)
 

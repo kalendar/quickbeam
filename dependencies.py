@@ -3,9 +3,9 @@ from typing import Annotated
 import jinjax
 from fastapi import Depends
 from fastapi.templating import Jinja2Templates
-from sqlalchemy.orm import Session as SQLASession
+from sqlalchemy.orm import Session
 
-from database import get_session
+from database import get_read_session, get_write_session
 
 __TEMPLATES = Jinja2Templates(directory="templates")
 
@@ -20,4 +20,5 @@ def get_templates() -> Jinja2Templates:
 
 
 Templates = Annotated[Jinja2Templates, Depends(get_templates)]
-Session = Annotated[SQLASession, Depends(get_session)]
+WriteSession = Annotated[Session, Depends(get_write_session)]
+ReadSession = Annotated[Session, Depends(get_read_session)]
