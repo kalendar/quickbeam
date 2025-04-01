@@ -22,6 +22,7 @@
   </div>
   <div>
     <label for="status"
+    class="font-bold text-lg"
       >Status
       <Tooltip>
         This is the publishing status of your textbook. Draft is private,
@@ -44,6 +45,7 @@
   </div>
   <div>
     <label for="edition"
+      class="font-bold text-lg"
       >Edition
       <Tooltip>
         This is the edition of your textbook. It will be shown to learners.
@@ -94,7 +96,7 @@
       id="authors"
       required
       placeholder="FirstName LastName\nFirstName LastName"
-      :text="textbook.authors if textbook else ''" />
+      :text="textbook.authors if textbook else ''" 
       placeholder="* FirstName LastName\n* FirstName LastName"
       :text="textbook.authors if textbook and textbook.authors else ''" />
   </div>
@@ -113,7 +115,7 @@
       id="reviewers"
       required
       placeholder="No Reviewers Yet"
-      :text="textbook.reviewers if textbook else ''" />
+      :text="textbook.reviewers if textbook else ''"
       placeholder="FirstName LastName\nFirstName LastName"
       :text="textbook.reviewers if textbook and textbook.reviewers else ''" />
   </div>
