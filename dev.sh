@@ -11,8 +11,8 @@ if [ ! -f ".git/hooks/pre-commit" ]; then
     pre-commit install
 fi
 
-# Start tailwindcss in background
-npx tailwindcss -i ./src/input.css -o ./static/main.css -w &
+# Start tailwindcss, can't use same terminal because fastapi dev kills it on reload.
+npx tailwindcss -i ./src/input.css -o ./static/main.css -w
 
 # Start FastAPI server
 fastapi dev --port 5081
