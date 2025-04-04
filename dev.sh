@@ -11,7 +11,8 @@ if [ ! -f ".git/hooks/pre-commit" ]; then
     pre-commit install
 fi
 
-# Start tailwindcss in the background
+# Start Tailwind CSS in the background
+npm ci
 npx tailwindcss -i ./src/input.css -o ./static/main.css -w &
 TAILWIND_PID=$!
 

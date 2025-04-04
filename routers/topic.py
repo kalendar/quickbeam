@@ -3,10 +3,10 @@ import uuid
 from fastapi import HTTPException, Request
 from fastapi.responses import HTMLResponse
 from fastapi.routing import APIRouter
+from leaflock.sqlalchemy_tables.topic import Topic
 from pydantic import BaseModel
 
 from dependencies import ReadSession, Templates, WriteSession
-from leaflock.sqlalchemy_tables.topic import Topic
 
 router = APIRouter()
 

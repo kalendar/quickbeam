@@ -9,8 +9,8 @@ if (-not (Test-Path -Path ".git\hooks\pre-commit")) {
     pre-commit install
 }
 
-# Start tailwindcss, can't use same terminal because fastapi dev kills it on reload.
-Start-Process -FilePath "powershell" -ArgumentList "npx tailwindcss -i .\src\input.css -o .\static\main.css -w"
+# Start tailwindcss at correct version, can't use same terminal because fastapi dev kills it on reload.
+Start-Process -FilePath "powershell" -ArgumentList "npm ci; npx tailwindcss -i .\src\input.css -o .\static\main.css -w"
 
 # Start FastAPI server
 fastapi dev --port 5081
