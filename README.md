@@ -1,3 +1,9 @@
+# UPDATE
+
+## This functionality has been merged into [GOLE Studio](https://github.com/kalendar/gole_studio) and this repo has been archived.
+
+
+
 # quickbeam
 Quickbeam is a tool for authoring and managing generative textbooks, based on Open Educational Language Models.
 
